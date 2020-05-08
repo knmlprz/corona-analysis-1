@@ -6,7 +6,7 @@ Mainly made for data from Poland.
 
 ## Requirements
 
-* Python 3.4 or greater
-* BeautifulSoup 4
-* Pandas
+* `Python` 3.4 or greater
+* `BeautifulSoup` 4
+* `Pandas`
 
