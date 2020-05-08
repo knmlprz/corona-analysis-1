@@ -1,0 +1,15 @@
+enabled: true
+auto: true
+pull_requests: true
+comments: true
+statuses:
+    error: true
+ignore_labels:
+    - restyled-ignore
+
+restylers:
+    - autopep8:
+        include:
+            - "**/*.py"
+        interpreters:
+            - python
