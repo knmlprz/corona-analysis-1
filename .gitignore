@@ -1,6 +1,6 @@
 
-# Created by https://www.gitignore.io/api/vim,linux,python,windows
-# Edit at https://www.gitignore.io/?templates=vim,linux,python,windows
+# Created by https://www.gitignore.io/api/vim,linux,python,windows,venv
+# Edit at https://www.gitignore.io/?templates=vim,linux,python,windows,venv
 
 ### Linux ###
 *~
@@ -122,6 +122,19 @@ dmypy.json
 # Pyre type checker
 .pyre/
 
+### venv ###
+# Virtualenv
+# http://iamzed.com/2009/05/07/a-primer-on-virtualenv/
+pyvenv.cfg
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+pip-selfcheck.json
+
 ### Vim ###
 # Swap
 [._]*.s[a-v][a-z]
@@ -172,4 +185,4 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 
-# End of https://www.gitignore.io/api/vim,linux,python,windows
+# End of https://www.gitignore.io/api/vim,linux,python,windows,venv
