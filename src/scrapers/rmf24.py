@@ -91,4 +91,7 @@ def convert_data(sick, deaths, recovers):
     recovers = pd.DataFrame(recovers)
     recovers.columns = ("date", "recovers")
 
-    return {"sick": sick, "deaths": deaths, "recovers": recovers}
+    tmp = pd.merge(sick, deaths, how="outer", on="date")
+    tmp = pd.merge(tmp, recovers, how="outer", on="date")
+
+    return tmp
