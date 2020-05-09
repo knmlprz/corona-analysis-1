@@ -1,4 +1,3 @@
-import os
 import urllib.request
 from time import sleep
 
@@ -13,10 +12,13 @@ def scrape_page_data(npages, delay=0.01):
     :param npages Number of pages to scrape
     :param delay Seconds of delay between requests
 
+    :returns pandas.DataFrame
+
     """
     # Container for data
     data = []
 
+    # Page url template
     url_template = r"http://policja.pl/pol/form/1,Informacja-dzienna.html?page={}"
 
     for i in range(0, npages):
@@ -48,17 +50,8 @@ def scrape_page_data(npages, delay=0.01):
                 print("\033[93mHttp error. Trying again... \033[0m")
                 sleep(delay)
 
-    df = pd.DataFrame(data)
-    print(df)
-
-    # Dump df to csv
-    outdir = "./Data"
-    outname = "policjapl" + ".csv"
-    if not os.path.exists(outdir):
-        os.mkdir(outdir)
-
-    df.to_csv(os.path.join(outdir, outname), sep="\t")
+    return pd.DataFrame(data)
 
 
 if __name__ == "__main__":
-    scrape_page_data(10, 0.05)
+    print(scrape_page_data(10, 0.05))
