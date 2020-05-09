@@ -13,8 +13,8 @@ def remove_prefix(string, prefix):
     :param string string to edit
     :param prefix patter for prefix
     """
-    if prefix in string[: len(prefix)]:
-        return string[len(prefix) :]
+    if prefix in string[:len(prefix)]:
+        return string[len(prefix):]
     else:
         return string
 
@@ -25,8 +25,8 @@ def remove_suffix(string, suffix):
     :param string string to edit
     :param suffix patter for suffix
     """
-    if suffix in string[: len(suffix)]:
-        return string[len(suffix) :]
+    if suffix in string[:len(suffix)]:
+        return string[len(suffix):]
     else:
         return string
 
