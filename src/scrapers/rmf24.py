@@ -12,8 +12,8 @@ def remove_prefix(string, prefix):
     :param string string to edit
     :param prefix patter for prefix
     """
-    if prefix in string[:len(prefix)]:
-        return string[len(prefix):]
+    if prefix in string[: len(prefix)]:
+        return string[len(prefix) :]
     else:
         return string
 
@@ -24,8 +24,8 @@ def remove_suffix(string, suffix):
     :param string string to edit
     :param suffix patter for suffix
     """
-    if suffix in string[:len(suffix)]:
-        return string[len(suffix):]
+    if suffix in string[: len(suffix)]:
+        return string[len(suffix) :]
     else:
         return string
 
@@ -40,7 +40,7 @@ def scrape_page_data(url=url):
     # Create parser
     soup = bs(page.read(), "html.parser")
     # Data is stored in the last script
-    data = str(soup.body.find('script'))
+    data = str(soup.body.find("script"))
 
     # find lists of data
     (sick, deaths, recovers) = re.findall(r"\[\[.*\]\]", data)
@@ -49,12 +49,18 @@ def scrape_page_data(url=url):
     deaths = deaths.split("],[")
     recovers = recovers.split("],[")
 
-    sick = [remove_suffix(remove_prefix(remove_prefix(
-        i, "[["), "Date.UTC"), "]]") for i in sick]
-    deaths = [remove_suffix(remove_prefix(remove_prefix(
-        i, "[["), "Date.UTC"), "]]") for i in deaths]
-    recovers = [remove_suffix(remove_prefix(remove_prefix(
-        i, "[["), "Date.UTC"), "]]") for i in recovers]
+    sick = [
+        remove_suffix(remove_prefix(remove_prefix(i, "[["), "Date.UTC"), "]]")
+        for i in sick
+    ]
+    deaths = [
+        remove_suffix(remove_prefix(remove_prefix(i, "[["), "Date.UTC"), "]]")
+        for i in deaths
+    ]
+    recovers = [
+        remove_suffix(remove_prefix(remove_prefix(i, "[["), "Date.UTC"), "]]")
+        for i in recovers
+    ]
 
     sick = [i.split("),") for i in sick]
     deaths = [i.split("),") for i in deaths]
