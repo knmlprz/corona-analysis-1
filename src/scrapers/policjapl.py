@@ -28,7 +28,8 @@ def scrape_page_data(npages, delay=0.01):
 
                 # Find table with data
                 table = soup.find(
-                    "table", {"class": "table-listing margin_b20"}).find_all("tr")
+                    "table", {"class": "table-listing margin_b20"}
+                ).find_all("tr")
 
                 # Parse tr tags
                 for ntr in range(1, len(table)):
@@ -37,7 +38,7 @@ def scrape_page_data(npages, delay=0.01):
 
                     # Parse td tags (rows)
                     for ntd in range(0, len(tds)):
-                        row[tds[ntd]['data-label']] = tds[ntd].string
+                        row[tds[ntd]["data-label"]] = tds[ntd].string
 
                     print("\033[92mRow found: {:.80} \033[0m".format(str(row)))
                     data.append(row)
@@ -58,5 +59,5 @@ def scrape_page_data(npages, delay=0.01):
     df.to_csv(os.path.join(outdir, outname), sep="\t")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     scrape_page_data(10, 0.05)
