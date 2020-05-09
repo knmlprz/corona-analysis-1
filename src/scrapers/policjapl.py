@@ -36,7 +36,7 @@ def scrape_page_data(npages):
 
                 print("\033[92mRow found: {:.80} \033[0m".format(str(row)))
                 data.append(row)
-        except urllib.error.HTTPError as e:
+        except urllib.error.HTTPError:
             print("\033[93mHttp error \033[0m")
 
     df = pd.DataFrame(data)
@@ -52,4 +52,4 @@ def scrape_page_data(npages):
 
 
 if __name__ == '__main__':
-    scrape_page_data(10)
+    scrape_page_data(100)
