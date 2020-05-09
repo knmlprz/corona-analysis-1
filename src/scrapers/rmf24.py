@@ -1,22 +1,25 @@
+"""
+This module gathers data from RMF24 chart
+"""
 import re
 from urllib import request
 
 import pandas as pd
 from bs4 import BeautifulSoup as bs
 
-url = "https://www.rmf.fm/inc/outer/korona-wykres/wykres.html"
 from utils.affixes import remove_prefix
 from utils.affixes import remove_suffix
 
+URL = "https://www.rmf.fm/inc/outer/korona-wykres/wykres.html"
 
 
-def scrape_page_data(url=url):
+def scrape_page_data(data_url=URL):
     """
     Scrapes data from rmf's chart
-    :param url url of the website with data
+    :param data_url url of the website with data
     """
     # Load web page
-    page = request.urlopen(url)
+    page = request.urlopen(data_url)
     # Create parser
     soup = bs(page.read(), "html.parser")
     # Data is stored in the last script
@@ -55,7 +58,7 @@ def scrape_page_data(url=url):
 
 def convert_data(sick, deaths, recovers):
     """
-    Returns dict of dataframes. Elements named same as function arguments
+    Returns dataframe of deaths, recovered and sick people
     :param sick list of lists with date and amount of sick people
     :param deaths list of lists with date and amount of dead people
     :param recovers list of lists with date and amount of recovered people
