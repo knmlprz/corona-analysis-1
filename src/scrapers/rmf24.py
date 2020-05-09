@@ -1,6 +1,4 @@
-import json
 import pandas as pd
-import os
 import re
 from bs4 import BeautifulSoup as bs
 from urllib import request
@@ -65,5 +63,25 @@ def scrape_page_data(url=url):
     sick = [["-".join(i[0][1:].split(",")), i[1]] for i in sick]
     deaths = [["-".join(i[0][1:].split(",")), i[1]] for i in deaths]
     recovers = [["-".join(i[0][1:].split(",")), i[1]] for i in recovers]
+
+    return {"sick": sick, "deaths": deaths, "recovers": recovers}
+
+
+def convert_data(sick, deaths, recovers):
+    """
+    Returns dict of dataframes. Elements named same as function arguments
+    :param sick list of lists with date and amount of sick people
+    :param deaths list of lists with date and amount of dead people
+    :param recovers list of lists with date and amount of recovered people
+    """
+
+    sick = pd.DataFrame(sick)
+    sick.columns = ("date", "sick")
+
+    deaths = pd.DataFrame(deaths)
+    deaths.columns = ("date", "deaths")
+
+    recovers = pd.DataFrame(recovers)
+    recovers.columns = ("date", "recovers")
 
     return {"sick": sick, "deaths": deaths, "recovers": recovers}
