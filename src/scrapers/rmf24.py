@@ -1,6 +1,7 @@
 """
 This module gathers data from RMF24 chart
 """
+
 import re
 from urllib import request
 
@@ -20,6 +21,7 @@ def scrape_page_data(data_url=URL):
     """
     # Load web page
     page = request.urlopen(data_url)
+
     # Create parser
     soup = bs(page.read(), "html.parser")
     # Data is stored in the last script
