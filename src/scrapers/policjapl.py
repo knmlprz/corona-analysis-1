@@ -2,13 +2,14 @@ import urllib.request
 from bs4 import BeautifulSoup
 import pandas as pd
 import os
+from time import sleep
 
-
-def scrape_page_data(npages):
+def scrape_page_data(npages, delay):
     """
     Scrapes dataset from http://policja.pl/pol/form/1,Informacja-dzienna.html
 
     :param npages Number of pages to scrape
+    :param delay Seconds of delay between requests
 
     """
     # Container for data
@@ -38,6 +39,7 @@ def scrape_page_data(npages):
                 data.append(row)
         except urllib.error.HTTPError:
             print("\033[93mHttp error \033[0m")
+        sleep(delay)
 
     df = pd.DataFrame(data)
     print(df)
@@ -52,4 +54,4 @@ def scrape_page_data(npages):
 
 
 if __name__ == '__main__':
-    scrape_page_data(100)
+    scrape_page_data(10, 0.05)
