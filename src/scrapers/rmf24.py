@@ -1,7 +1,8 @@
-import pandas as pd
 import re
-from bs4 import BeautifulSoup as bs
 from urllib import request
+
+import pandas as pd
+from bs4 import BeautifulSoup as bs
 
 url = "https://www.rmf.fm/inc/outer/korona-wykres/wykres.html"
 
