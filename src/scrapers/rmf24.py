@@ -1,7 +1,8 @@
-import pandas as pd
 import re
-from bs4 import BeautifulSoup as bs
 from urllib import request
+
+import pandas as pd
+from bs4 import BeautifulSoup as bs
 
 url = "https://www.rmf.fm/inc/outer/korona-wykres/wykres.html"
 
@@ -40,7 +41,7 @@ def scrape_page_data(url=url):
     # Create parser
     soup = bs(page.read(), "html.parser")
     # Data is stored in the last script
-    data = str(soup.body.find('script'))
+    data = str(soup.body.find("script"))
 
     # find lists of data
     (sick, deaths, recovers) = re.findall(r"\[\[.*\]\]", data)
@@ -49,12 +50,18 @@ def scrape_page_data(url=url):
     deaths = deaths.split("],[")
     recovers = recovers.split("],[")
 
-    sick = [remove_suffix(remove_prefix(remove_prefix(
-        i, "[["), "Date.UTC"), "]]") for i in sick]
-    deaths = [remove_suffix(remove_prefix(remove_prefix(
-        i, "[["), "Date.UTC"), "]]") for i in deaths]
-    recovers = [remove_suffix(remove_prefix(remove_prefix(
-        i, "[["), "Date.UTC"), "]]") for i in recovers]
+    sick = [
+        remove_suffix(remove_prefix(remove_prefix(i, "[["), "Date.UTC"), "]]")
+        for i in sick
+    ]
+    deaths = [
+        remove_suffix(remove_prefix(remove_prefix(i, "[["), "Date.UTC"), "]]")
+        for i in deaths
+    ]
+    recovers = [
+        remove_suffix(remove_prefix(remove_prefix(i, "[["), "Date.UTC"), "]]")
+        for i in recovers
+    ]
 
     sick = [i.split("),") for i in sick]
     deaths = [i.split("),") for i in deaths]
