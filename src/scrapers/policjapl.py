@@ -1,8 +1,9 @@
-import urllib.request
-from bs4 import BeautifulSoup
-import pandas as pd
 import os
+import urllib.request
 from time import sleep
+
+import pandas as pd
+from bs4 import BeautifulSoup
 
 
 def scrape_page_data(npages, delay=0.01):
