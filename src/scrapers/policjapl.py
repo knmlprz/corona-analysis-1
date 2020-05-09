@@ -28,9 +28,9 @@ def scrape_page_data(npages, delay=0.01):
                 soup = BeautifulSoup(web.read(), "lxml")
 
                 # Find table with data
-                table = soup.find(
-                    "table", {"class": "table-listing margin_b20"}
-                ).find_all("tr")
+                table = soup.find("table", {
+                    "class": "table-listing margin_b20"
+                }).find_all("tr")
 
                 # Parse tr tags
                 for ntr in range(1, len(table)):
