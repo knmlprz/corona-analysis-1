@@ -42,7 +42,7 @@ def scrape_page_data():
 
             # Export df to "./Data/koronawirusunas/file_name.csv"
             # Create directory if not exists
-            outdir = "./Data/koronawirusunas"
+            outdir = "./data/koronawirusunas"
             outname = js_vars_names[i] + ".csv"
             if not os.path.exists(outdir):
                 os.makedirs(outdir)
