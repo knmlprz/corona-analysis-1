@@ -44,7 +44,8 @@ def clean_data():
     hospitalizacja = pd.read_csv(Path(path, files_to_clean[0] + ".csv"),
                                  sep="\t",
                                  index_col=0,
-                                 usecols=["country", "hosp", "kwar", "kwar_z", "nadzor"],
+                                 usecols=["country", "hosp",
+                                          "kwar", "kwar_z", "nadzor"],
                                  parse_dates=['country'],
                                  dayfirst=True
                                  )

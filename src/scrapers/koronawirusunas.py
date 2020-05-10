@@ -18,7 +18,8 @@ def scrape_page_data():
     # Get all strings like 'var * = *;'
     # 11 th script contains data
     script = soup.find_all('script')[10]
-    js_vars_data = re.findall(r'var.*?=\s*(.*?);', script.string, re.DOTALL | re.MULTILINE)
+    js_vars_data = re.findall(
+        r'var.*?=\s*(.*?);', script.string, re.DOTALL | re.MULTILINE)
 
     js_vars_names = re.findall(r"var\s*(\S*)", script.string)
     print(js_vars_names)
@@ -48,7 +49,8 @@ def scrape_page_data():
 
             df.to_csv(os.path.join(outdir, outname), sep="\t")
 
-            print("\033[92mFrame found: {:.20} \033[0m".format(js_vars_names[i]))
+            print("\033[92mFrame found: {:.20} \033[0m".format(
+                js_vars_names[i]))
             print(df)
 
         except json.decoder.JSONDecodeError:
