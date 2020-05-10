@@ -53,7 +53,7 @@ def clean_data():
                             sep="\t",
                             index_col=0,
                             usecols=["dzien", "pieszo", "pojazdem"],
-                            parse_dates = ['dzien'],
+                            parse_dates=['dzien'],
                             dayfirst=True
                             )
 
@@ -78,10 +78,15 @@ def clean_data():
     przyrost.index.name = None
     testy.index.name = None
 
+    # Join df
     df = hospitalizacja.join(mobilnosc, how="outer")
     df = df.join(przyrost, how="outer")
     df = df.join(testy, how="outer")
     df.sort_index()
+
+    # Dump df to csv
+    outname = "data_koronawirusunas.csv"
+    df.to_csv(Path(path, outname))
 
 
 if __name__ == "__main__":
