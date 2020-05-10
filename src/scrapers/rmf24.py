@@ -7,8 +7,10 @@ from urllib import request
 import pandas as pd
 from bs4 import BeautifulSoup as bs
 
-from utils.affixes import remove_prefix
-from utils.affixes import remove_suffix
+
+from src.utils.affixes import remove_prefix
+from src.utils.affixes import remove_suffix
+
 
 URL = "https://www.rmf.fm/inc/outer/korona-wykres/wykres.html"
 
@@ -20,6 +22,7 @@ def scrape_page_data(data_url=URL):
     """
     # Load web page
     page = request.urlopen(data_url)
+
     # Create parser
     soup = bs(page.read(), "html.parser")
     # Data is stored in the last script
@@ -58,7 +61,7 @@ def scrape_page_data(data_url=URL):
 
 def convert_data(sick, deaths, recovers):
     """
-    Returns dict of dataframes. Elements named same as function arguments
+    Returns dataframe of deaths, recovered and sick people
     :param sick list of lists with date and amount of sick people
     :param deaths list of lists with date and amount of dead people
     :param recovers list of lists with date and amount of recovered people
