@@ -1,15 +1,16 @@
 """
 This module gathers data from RMF24 chart
 """
-
 import re
 from urllib import request
 
 import pandas as pd
 from bs4 import BeautifulSoup as bs
 
+
 from src.utils.affixes import remove_prefix
 from src.utils.affixes import remove_suffix
+
 
 URL = "https://www.rmf.fm/inc/outer/korona-wykres/wykres.html"
 
