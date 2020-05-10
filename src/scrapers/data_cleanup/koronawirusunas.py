@@ -44,24 +44,32 @@ def clean_data():
     hospitalizacja = pd.read_csv(Path(path, files_to_clean[0] + ".csv"),
                                  sep="\t",
                                  index_col=0,
-                                 usecols=["country", "hosp", "kwar", "kwar_z", "nadzor"]
+                                 usecols=["country", "hosp", "kwar", "kwar_z", "nadzor"],
+                                 parse_dates=['country'],
+                                 dayfirst=True
                                  )
 
     mobilnosc = pd.read_csv(Path(path, files_to_clean[1] + ".csv"),
                             sep="\t",
                             index_col=0,
-                            usecols=["dzien", "pieszo", "pojazdem"]
+                            usecols=["dzien", "pieszo", "pojazdem"],
+                            parse_dates = ['dzien'],
+                            dayfirst=True
                             )
 
     przyrost = pd.read_csv(Path(path, files_to_clean[2] + ".csv"),
                            sep="\t",
                            index_col=0,
-                           usecols=["country", "zar", "chor", "zgo", "wyl"]
+                           usecols=["country", "zar", "chor", "zgo", "wyl"],
+                           parse_dates=['country'],
+                           dayfirst=True
                            )
     testy = pd.read_csv(Path(path, files_to_clean[3] + ".csv"),
                         sep="\t",
                         index_col=0,
-                        usecols=["dzien", "smp", "testy", "testyl"]
+                        usecols=["dzien", "smp", "testy", "testyl"],
+                        parse_dates=['dzien'],
+                        dayfirst=True
                         )
 
     # Remove index.name
@@ -70,10 +78,11 @@ def clean_data():
     przyrost.index.name = None
     testy.index.name = None
 
-    print(hospitalizacja)
-    print(mobilnosc)
-    print(przyrost)
-    print(testy)
+    df = hospitalizacja.join(mobilnosc, how="outer")
+    df = df.join(przyrost, how="outer")
+    df = df.join(testy, how="outer")
+    df.sort_index()
+
 
 if __name__ == "__main__":
     clean_data()
