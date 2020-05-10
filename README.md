@@ -12,7 +12,9 @@ Mainly made for data from Poland.
 
 ## Data sources
 
-* [Meteostat](https://meteostat.net/en/sources)
+* [Meteostat](https://meteostat.net/en/sources) Meteorological data: Copyright ©
+National Oceanic and Atmospheric Administration (NOAA),
+Deutscher Wetterdienst (DWD)
 * [RMF24](https://www.rmf.fm/inc/outer/korona-wykres/wykres.html)
 * [Polish Police statistics](http://policja.pl/pol/form/1,dok.html)
 * [Koronawirusunas](http://koronawirusunas.pl)
