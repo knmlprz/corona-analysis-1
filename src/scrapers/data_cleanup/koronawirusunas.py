@@ -1,6 +1,64 @@
 import os
 from pathlib import Path
 import pandas as pd
+from functools import reduce
+
+
+def datafolder_path():
+    path = Path(__file__).parents[1]
+    return Path(path, r"Data/koronawirusunas")
+
+
+
+
+def clean_datasource_testy(path=datafolder_path(), filename="dataSource_testy.csv"):
+    if Path(path, filename).is_file()
+        df = pd.read_csv(Path(path, filename),
+                         sep="\t",
+                         index_col=0,
+                         usecols=["dzien", "smp", "testy", "testyl"],
+                         parse_dates=['dzien'],
+                         dayfirst=True
+                         )
+        df.index.name = None
+    return df
+
+
+def clean_datasource_przyrost(path=datafolder_path(), filename="dataSource_przyrost.csv"):
+    df = pd.read_csv(Path(path, filename),
+                     sep="\t",
+                     index_col=0,
+                     usecols=["country", "zar", "chor", "zgo", "wyl"],
+                     parse_dates=['country'],
+                     dayfirst=True
+                     )
+    df.index.name = None
+    return df
+
+
+def clean_datasource_mobilnosc(path=datafolder_path(), filename="dataSource_mobilnosc.csv"):
+    df = pd.read_csv(Path(path, filename),
+                     sep="\t",
+                     index_col=0,
+                     usecols=["dzien", "pieszo", "pojazdem"],
+                     parse_dates=['dzien'],
+                     dayfirst=True
+                     )
+    df.index.name = None
+    return df
+
+
+def clean_datasource_hospitalizacja(path=datafolder_path(), filename="dataSource_hospitalizacja.csv"):
+    df = pd.read_csv(Path(path, filename),
+                     sep="\t",
+                     index_col=0,
+                     usecols=["country", "hosp",
+                              "kwar", "kwar_z", "nadzor"],
+                     parse_dates=['country'],
+                     dayfirst=True
+                     )
+    df.index.name = None
+    return df
 
 
 def clean_data():
@@ -8,86 +66,17 @@ def clean_data():
     Cleans data scraped from website www.koronawirusunas.pk
 
     """
-
-    # Names of files to be deleted
-    files_to_rm = ["data", "Data_przyrost_procent",
-                   "datah", "datazgony", "datazk",
-                   "datazz", "populationData",
-                   "Data_przyrost_szpital", "Data_przyrost_testy"]
-
-    # Names of files to be cleaned
-    files_to_clean = ["dataSource_hospitalizacja", "dataSource_mobilnosc",
-                      "dataSource_przyrost", "dataSource_testy"]
-
-    # Get path to /src/scrapers/Data/koronawirusunas
-    path = Path(__file__).parents[1]
-    path = Path(path, r"Data/koronawirusunas")
-
-    # Remove files
-    for filename in files_to_rm:
-        filepath = Path(path, filename + ".csv")
-        if os.path.isfile(filepath):
-            os.remove(filepath)
-            print("Removed file: {}".format(filepath))
-
-    # Check if files to clean exist
-    for filename in files_to_clean:
-        filepath = Path(path, filename + ".csv")
-        if os.path.isfile(filepath):
-            print("Found file: {}".format(filepath))
-        else:
-            # Exit if file is not present
-            print("Error missing file: {}".format(filepath))
-            return
-
     # Load dataframes
-    hospitalizacja = pd.read_csv(Path(path, files_to_clean[0] + ".csv"),
-                                 sep="\t",
-                                 index_col=0,
-                                 usecols=["country", "hosp",
-                                          "kwar", "kwar_z", "nadzor"],
-                                 parse_dates=['country'],
-                                 dayfirst=True
-                                 )
+    df = [
+        clean_datasource_hospitalizacja(),
+        clean_datasource_mobilnosc(),
+        clean_datasource_przyrost(),
+        clean_datasource_testy(),
+    ]
 
-    mobilnosc = pd.read_csv(Path(path, files_to_clean[1] + ".csv"),
-                            sep="\t",
-                            index_col=0,
-                            usecols=["dzien", "pieszo", "pojazdem"],
-                            parse_dates=['dzien'],
-                            dayfirst=True
-                            )
-
-    przyrost = pd.read_csv(Path(path, files_to_clean[2] + ".csv"),
-                           sep="\t",
-                           index_col=0,
-                           usecols=["country", "zar", "chor", "zgo", "wyl"],
-                           parse_dates=['country'],
-                           dayfirst=True
-                           )
-    testy = pd.read_csv(Path(path, files_to_clean[3] + ".csv"),
-                        sep="\t",
-                        index_col=0,
-                        usecols=["dzien", "smp", "testy", "testyl"],
-                        parse_dates=['dzien'],
-                        dayfirst=True
-                        )
-
-    # Remove index.name
-    hospitalizacja.index.name = None
-    mobilnosc.index.name = None
-    przyrost.index.name = None
-    testy.index.name = None
-
-    # Join df
-    df = hospitalizacja.join(mobilnosc, how="outer")
-    df = df.join(przyrost, how="outer")
-    df = df.join(testy, how="outer")
-    df.sort_index()
-
-    # Dump df to csv
-    outname = "data_koronawirusunas.csv"
-    df.to_csv(Path(path, outname))
+    df_merged = reduce(lambda left, right: pd.merge(left, right,
+                                                    how='outer'), df)
+    return df_merged
 
 
 if __name__ == "__main__":
