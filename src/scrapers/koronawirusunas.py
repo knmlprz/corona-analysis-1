@@ -20,7 +20,6 @@ def scrape_page_data():
     script = soup.find_all('script')[10]
     js_vars_data = re.findall(r'var.*?=\s*(.*?);', script.string, re.DOTALL | re.MULTILINE)
 
-
     js_vars_names = re.findall(r"var\s*(\S*)", script.string)
     print(js_vars_names)
 
@@ -40,19 +39,19 @@ def scrape_page_data():
             # Load it directly to dataframe
             df = pd.DataFrame(o)
 
-            # Export df to "./Data/file_name.csv"
+            # Export df to "./Data/koronawirusunas/file_name.csv"
             # Create directory if not exists
-            outdir = "./Data"
+            outdir = "./Data/koronawirusunas"
             outname = js_vars_names[i] + ".csv"
             if not os.path.exists(outdir):
-                os.mkdir(outdir)
+                os.makedirs(outdir)
 
             df.to_csv(os.path.join(outdir, outname), sep="\t")
 
             print("\033[92mFrame found: {:.20} \033[0m".format(js_vars_names[i]))
             print(df)
 
-        except json.decoder.JSONDecodeError as e:
+        except json.decoder.JSONDecodeError:
             # Decoder Exception.
             print("\033[93mData skipped: {:.20} \033[0m".format(r))
 
