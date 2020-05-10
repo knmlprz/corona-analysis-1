@@ -9,18 +9,16 @@ def datafolder_path():
     return Path(path, r"Data/koronawirusunas")
 
 
-
-
 def clean_datasource_testy(path=datafolder_path(), filename="dataSource_testy.csv"):
     if Path(path, filename).is_file()
-        df = pd.read_csv(Path(path, filename),
-                         sep="\t",
-                         index_col=0,
-                         usecols=["dzien", "smp", "testy", "testyl"],
-                         parse_dates=['dzien'],
-                         dayfirst=True
-                         )
-        df.index.name = None
+    df = pd.read_csv(Path(path, filename),
+                     sep="\t",
+                     index_col=0,
+                     usecols=["dzien", "smp", "testy", "testyl"],
+                     parse_dates=['dzien'],
+                     dayfirst=True
+                     )
+    df.index.name = None
     return df
 
 
