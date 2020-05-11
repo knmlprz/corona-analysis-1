@@ -4,6 +4,7 @@ import urllib.request
 from bs4 import BeautifulSoup
 import pandas as pd
 import os
+from sys import stderr
 
 
 def scrape_page_data():
@@ -55,7 +56,7 @@ def scrape_page_data():
 
         except json.decoder.JSONDecodeError:
             # Decoder Exception.
-            print("\033[93mData skipped: {:.20} \033[0m".format(r))
+            print("Data skipped: {:.20}".format(r), file=stderr)
 
 
 if __name__ == '__main__':
