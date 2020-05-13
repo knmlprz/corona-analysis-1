@@ -41,12 +41,12 @@ def scrape_page_data():
             # Load it directly to dataframe
             df = pd.DataFrame(o)
 
-            # Export df to "./Data/file_name.csv"
+            # Export df to "./Data/koronawirusunas/file_name.csv"
             # Create directory if not exists
-            outdir = "./Data"
+            outdir = "./data/koronawirusunas"
             outname = js_vars_names[i] + ".csv"
             if not os.path.exists(outdir):
-                os.mkdir(outdir)
+                os.makedirs(outdir)
 
             df.to_csv(os.path.join(outdir, outname), sep="\t")
 
