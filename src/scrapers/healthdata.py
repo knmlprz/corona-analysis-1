@@ -15,7 +15,7 @@ def get_data(url: str = URL):
 
     ...
 
-    Attribures
+    Attributes
     ----------
     url : str
         string with url to download file
