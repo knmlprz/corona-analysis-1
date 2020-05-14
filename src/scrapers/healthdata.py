@@ -13,8 +13,6 @@ def get_data(url: str = URL):
     """
     Get Data
 
-    ...
-
     Attributes
     ----------
     url : str
