@@ -6,6 +6,8 @@ import pandas as pd
 import os
 from sys import stderr
 
+URL = "https://www.koronawirusunas.pl"
+PATTERN = re.compile("var\sdataSource_mobilnosc")
 
 def scrape_page_data():
     """
@@ -13,12 +15,12 @@ def scrape_page_data():
 
     """
     # Load webpage
-    web = urllib.request.urlopen("https://www.koronawirusunas.pl")
+    web = urllib.request.urlopen(URL)
     soup = BeautifulSoup(web.read(), "lxml")
 
+    # Get first scrpit tag that contains PATTERN
+    script = soup.find('script', text=PATTERN)
     # Get all strings like 'var * = *;'
-    # 11 th script contains data
-    script = soup.find_all('script')[10]
     js_vars_data = re.findall(
         r'var.*?=\s*(.*?);', script.string, re.DOTALL | re.MULTILINE)
 
