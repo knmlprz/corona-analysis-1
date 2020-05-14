@@ -15,10 +15,16 @@ from src.utils.affixes import remove_suffix
 URL = "https://www.rmf.fm/inc/outer/korona-wykres/wykres.html"
 
 
-def scrape_page_data(data_url=URL):
+def scrape_page_data(data_url: str = URL) -> dict:
     """
     Scrapes data from rmf's chart
-    :param data_url url of the website with data
+
+    ...
+
+    Attributes
+    ----------
+    data_url : str
+        url of the website with data
     """
     # Load web page
     page = request.urlopen(data_url)
@@ -59,13 +65,20 @@ def scrape_page_data(data_url=URL):
     return {"sick": sick, "deaths": deaths, "recovers": recovers}
 
 
-def convert_data(sick, deaths, recovers):
+def convert_data(sick: list, deaths: list, recovers: list) -> pd.DataFrame:
     """
     Returns dataframe of deaths, recovered and sick people
 
-    :param sick list of lists with date and amount of sick people
-    :param deaths list of lists with date and amount of dead people
-    :param recovers list of lists with date and amount of recovered people
+    ...
+
+    Attributes
+    ----------
+    sick : list
+        list of lists with date and amount of sick people
+    deaths : list
+        list of lists with date and amount of dead people
+    recovers : list
+        list of lists with date and amount of recovered people
     """
 
     sick = pd.DataFrame(sick)
