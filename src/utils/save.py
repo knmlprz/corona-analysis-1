@@ -1,6 +1,6 @@
 import pandas as pd
-from os import environ
-from sys import platform
+from src.utils.paths import get_path
+from pathlib import Path
 
 
 def save_dataframe(
@@ -19,12 +19,4 @@ def save_dataframe(
     destination : str, optional
         data folder destination (defaults to system cache directory)
     """
-    if destination is None:
-        if platform == "linux":
-            destination = environ["HOME"] + "/.cache/ca1/"
-        if platform == "win32":
-            destination = environ["localappdata"] + "\\ca1\\"
-        if platform == "darwin":
-            destination = environ["HOME"] + "/Library/Caches/ca1/"
-
-    data.to_csv(destination + filename + ".csv", index=False, mode="w+")
+    data.to_csv(Path(get_path(), filename + ".csv"), index=False, mode="w+")
