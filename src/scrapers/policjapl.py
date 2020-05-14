@@ -5,15 +5,16 @@ import pandas as pd
 from bs4 import BeautifulSoup
 
 
-def scrape_page_data(npages, delay=0.01):
+def scrape_page_data(npages: int, delay: float = 0.01):
     """
     Scrapes dataset from http://policja.pl/pol/form/1,Informacja-dzienna.html
 
-    :param npages Number of pages to scrape
-    :param delay Seconds of delay between requests
-
-    :returns pandas.DataFrame
-
+    Parameters
+    ----------
+    npages : int
+        Number of pages to scrape
+    delay : float
+        Seconds of delay between requests
     """
     # Container for data
     data = []
