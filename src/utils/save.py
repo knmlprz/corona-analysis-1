@@ -7,6 +7,7 @@ def save_dataframe(
         data: pd.DataFrame,
         filename: str,
         destination: str = None):
+
     """
     Saves given dataframe to CSV file
 
@@ -26,5 +27,5 @@ def save_dataframe(
             destination = environ["localappdata"] + "\\ca1\\"
         if platform == "darwin":
             destination = environ["HOME"] + "/Library/Caches/ca1/"
-
+            
     data.to_csv(destination + filename + ".csv", index=False, mode="w+")
