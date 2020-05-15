@@ -19,7 +19,8 @@ def save_dataframe(
     subdir : str
         subdirectory of ./data to put files into
     """
-    data.to_csv(Path(get_path(subdir=subdir), filename + ".csv"), index=False, mode="w+")
+    data.to_csv(Path(get_path(subdir=subdir), filename + ".csv"),
+                index=False, mode="w+")
 
 
 def save_dataframes(
