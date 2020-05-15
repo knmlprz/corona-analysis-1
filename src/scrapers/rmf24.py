@@ -6,11 +6,10 @@ import re
 from urllib import request
 
 import pandas as pd
-from bs4 import BeautifulSoup as bs
+from bs4 import BeautifulSoup
 
 from src.utils.affixes import remove_prefix
 from src.utils.affixes import remove_suffix
-
 
 URL = "https://www.rmf.fm/inc/outer/korona-wykres/wykres.html"
 
@@ -30,7 +29,7 @@ def scrape_page_data(data_url: str = URL) -> dict:
     page = request.urlopen(data_url)
 
     # Create parser
-    soup = bs(page.read(), "html.parser")
+    soup = BeautifulSoup(page.read(), "html.parser")
     # Data is stored in the last script
     data = str(soup.body.find("script"))
 

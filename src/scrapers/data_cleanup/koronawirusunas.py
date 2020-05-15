@@ -2,14 +2,11 @@ from pathlib import Path
 import pandas as pd
 from functools import reduce
 from sys import stderr
+from src.utils.paths import get_path
 
 
 def datafolder_path():
-    path = Path(__file__).parents[1]
-    path = Path(path, r"data/koronawirusunas")
-    if not path.exists():
-        path.mkdir(parents=True)
-    return path
+    return get_path(subdir="koronawirusunas")
 
 
 def clean_datasource_testy(path=datafolder_path(), filename="dataSource_testy.csv"):
