@@ -9,7 +9,7 @@ URL = "https://www.koronawirusunas.pl"
 PATTERN = re.compile(r"var\sdataSource_mobilnosc")
 
 
-def scrape_page_data():
+def scrape_page_data() -> dict:
     """
     Scrapes dataset from koronawirus.pl
 

@@ -1,11 +1,12 @@
-import urllib.request
+import pandas as pd
+import urllib
+from sys import stderr
 from time import sleep
 
-import pandas as pd
-from bs4 import BeautifulSoup
+URL = r"http://policja.pl/pol/form/1,Informacja-dzienna.html?page={}"
 
 
-def scrape_page_data(npages: int, delay: float = 0.01):
+def scrape_page_data(npages: int = 10, delay: float = 0.1):
     """
     Scrapes dataset from http://policja.pl/pol/form/1,Informacja-dzienna.html
 
@@ -16,43 +17,17 @@ def scrape_page_data(npages: int, delay: float = 0.01):
     delay : float
         Seconds of delay between requests
     """
-    # Container for data
+    # List to store df
     data = []
-
-    # Page url template
-    url_template = r"http://policja.pl/pol/form/1,Informacja-dzienna.html?page={}"
 
     for i in range(0, npages):
         # Try again max 100 times
         for attempt in range(0, 100):
             try:
-                # Load webpage
-                web = urllib.request.urlopen(url_template.format(i))
-                soup = BeautifulSoup(web.read(), "lxml")
-
-                # Find table with data
-                table = soup.find("table", {
-                    "class": "table-listing margin_b20"
-                }).find_all("tr")
-
-                # Parse tr tags
-                for ntr in range(1, len(table)):
-                    tds = table[ntr].find_all("td")
-                    row = {}
-
-                    # Parse td tags (rows)
-                    for ntd in range(0, len(tds)):
-                        row[tds[ntd]["data-label"]] = tds[ntd].string
-
-                    print("\033[92mRow found: {:.80} \033[0m".format(str(row)))
-                    data.append(row)
+                # Load and parse first table in URL to df
+                data.append(pd.read_html(URL.format(i), skiprows=1)[0])
                 break
             except urllib.error.HTTPError:
-                print("\033[93mHttp error. Trying again... \033[0m")
+                print("Http error. Trying again... ", file=stderr)
                 sleep(delay)
-
-    return pd.DataFrame(data)
-
-
-if __name__ == "__main__":
-    print(scrape_page_data(10, 0.05))
+    return {"policjapl": pd.concat(data)}
