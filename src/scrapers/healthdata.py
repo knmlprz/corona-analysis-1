@@ -5,6 +5,7 @@ from urllib import request
 from sys import platform
 from os import environ
 import zipfile
+from src.utils.paths import get_path
 
 URL = "https://ihmecovid19storage.blob.core.windows.net/latest/ihme-covid19.zip"
 
@@ -31,4 +32,4 @@ def get_data(url: str = URL):
         zipped.write(data_zipped)
 
     with zipfile.ZipFile("zipped.zip", "r") as zipped:
-        zipped.extractall("data/healthdata")
+        zipped.extractall(get_path(subdir="healthdata"))

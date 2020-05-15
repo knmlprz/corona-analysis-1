@@ -8,7 +8,7 @@ DATA_DIR = "data"
 
 def get_path(directory=DATA_DIR, subdir=""):
     """
-    Get relative path to /directory/subdir
+    Get absolute path to /directory/subdir
 
     ...
 
