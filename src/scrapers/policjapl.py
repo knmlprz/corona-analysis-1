@@ -6,7 +6,7 @@ from time import sleep
 URL = r"http://policja.pl/pol/form/1,Informacja-dzienna.html?page={}"
 
 
-def scrape_page_data(npages: int = 10, delay: float = 0.1):
+def scrape(npages: int = 10, delay: float = 0.1):
     """
     Scrapes dataset from http://policja.pl/pol/form/1,Informacja-dzienna.html
 
