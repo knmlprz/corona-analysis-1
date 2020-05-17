@@ -1,16 +1,16 @@
 """
 Automatically get data from healthdata.org
 """
-from urllib import request
-from sys import platform
-from os import environ
 import zipfile
-from src.utils.paths import get_path
+import requests
+from io import BytesIO, StringIO
+import pandas as pd
 
 URL = "https://ihmecovid19storage.blob.core.windows.net/latest/ihme-covid19.zip"
+FILENAME = "Hospitalization_all_locs.csv"
 
 
-def get_data(url: str = URL):
+def get_data(url: str = URL) -> dict:
     """
     Get Data
 
@@ -19,17 +19,18 @@ def get_data(url: str = URL):
     url : str
         string with url to download file
     """
-    data_zipped = request.urlopen(URL).read()
+    # Get file as bytes
+    request = requests.get(url)
+    data_zipped = zipfile.ZipFile(BytesIO(request.content))
 
-    if platform == "linux":
-        tmp_file = "/tmp/zipped.zip"
-    elif platform == "win32":
-        tmp_file = "{}zipped.zip".format(environ["TEMP"])
-    if platform == "darwin":
-        tmp_file = "{}zipped.zip".format(environ["TMPDIR"])
+    # Find dataset in zip file
+    filelist = data_zipped.namelist()
+    file = next((s for s in filelist if FILENAME in s), None)
 
-    with open(tmp_file, "w") as zipped:
-        zipped.write(data_zipped)
+    return {"healthdata": pd.read_csv(
+        StringIO(data_zipped.read(file).decode("utf-8")),
+        sep=",", index_col=0)}
 
-    with zipfile.ZipFile("zipped.zip", "r") as zipped:
-        zipped.extractall(get_path(subdir="healthdata"))
+
+if __name__ == '__main__':
+    print(get_data())
