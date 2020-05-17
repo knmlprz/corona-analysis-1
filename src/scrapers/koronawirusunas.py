@@ -3,7 +3,6 @@ import urllib.request
 from bs4 import BeautifulSoup
 import pandas as pd
 import demjson
-from functools import reduce
 
 URL = "https://www.koronawirusunas.pl"
 PATTERN = re.compile(r"var\sdataSource_mobilnosc")
@@ -71,7 +70,7 @@ def get_data():
 
     hospitalizacja = clean(data["dataSource_hospitalizacja"],
                            cols=["country", "hosp",
-                                    "kwar", "kwar_z", "nadzor"],
+                                 "kwar", "kwar_z", "nadzor"],
                            datecol="country")
 
     # Merge and return DataFrames
