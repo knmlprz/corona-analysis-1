@@ -75,18 +75,14 @@ def get_data():
                               datecol="country")
 
     # Merge and return DataFrames
-    dframes = [
-        hospitalizacja,
-        mobilnosc,
-        przyrost,
-        testy,
-    ]
+    df = pd.merge(testy, przyrost, how='outer', left_index=True,
+                  right_index=True)
+    df = pd.merge(df, mobilnosc, how='outer', left_index=True,
+                  right_index=True)
+    df = pd.merge(df, hospitalizacja, how='outer', left_index=True,
+                  right_index=True)
 
-    df_merged = reduce(lambda left, right: pd.merge(left, right,
-                                                    how='outer',
-                                                    left_index=True,
-                                                    right_index=True), dframes)
-    return {"koronawirusunas": df_merged}
+    return {"koronawirusunas": df}
 
 
 if __name__ == '__main__':
