@@ -9,7 +9,7 @@ URL = "https://www.koronawirusunas.pl"
 PATTERN = re.compile(r"var\sdataSource_mobilnosc")
 
 
-def scrape_page_data() -> dict:
+def scrape() -> dict:
     """
     Scrapes datasets from koronawirus.pl
 
@@ -27,7 +27,7 @@ def scrape_page_data() -> dict:
     return {t[0]: pd.DataFrame(demjson.decode(t[1])) for t in jsdata}
 
 
-def clean_df(data: pd.DataFrame, cols: list, datecol: str):
+def clean(data: pd.DataFrame, cols: list, datecol: str):
     """
     Performs basic cleaning of DataFrame
 
@@ -54,25 +54,25 @@ def get_data():
     """
 
     # Load data
-    data = scrape_page_data()
+    data = scrape()
 
     # Clean data
-    testy = clean_df(data["dataSource_testy"],
-                     cols=data["dataSource_testy"].columns,
-                     datecol="dzien")
+    testy = clean(data["dataSource_testy"],
+                  cols=data["dataSource_testy"].columns,
+                  datecol="dzien")
 
-    przyrost = clean_df(data["dataSource_przyrost"],
-                        cols=["country", "zar", "chor", "zgo", "wyl"],
-                        datecol="country")
+    przyrost = clean(data["dataSource_przyrost"],
+                     cols=["country", "zar", "chor", "zgo", "wyl"],
+                     datecol="country")
 
-    mobilnosc = clean_df(data["dataSource_mobilnosc"],
-                         cols=["dzien", "pieszo", "pojazdem"],
-                         datecol="dzien")
+    mobilnosc = clean(data["dataSource_mobilnosc"],
+                      cols=["dzien", "pieszo", "pojazdem"],
+                      datecol="dzien")
 
-    hospitalizacja = clean_df(data["dataSource_hospitalizacja"],
-                              cols=["country", "hosp",
+    hospitalizacja = clean(data["dataSource_hospitalizacja"],
+                           cols=["country", "hosp",
                                     "kwar", "kwar_z", "nadzor"],
-                              datecol="country")
+                           datecol="country")
 
     # Merge and return DataFrames
     df = pd.merge(testy, przyrost, how='outer', left_index=True,
