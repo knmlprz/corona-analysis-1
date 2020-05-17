@@ -14,7 +14,7 @@ from src.utils.affixes import remove_suffix
 URL = "https://www.rmf.fm/inc/outer/korona-wykres/wykres.html"
 
 
-def scrape_page_data(data_url: str = URL) -> dict:
+def scrape(data_url: str = URL) -> dict:
     """
     Scrapes data from rmf's chart
 
@@ -64,7 +64,7 @@ def scrape_page_data(data_url: str = URL) -> dict:
     return {"sick": sick, "deaths": deaths, "recovers": recovers}
 
 
-def convert_data(sick: list, deaths: list, recovers: list) -> pd.DataFrame:
+def get_data(sick: list, deaths: list, recovers: list) -> dict:
     """
     Returns dataframe of deaths, recovered and sick people
 
@@ -92,4 +92,4 @@ def convert_data(sick: list, deaths: list, recovers: list) -> pd.DataFrame:
     tmp = pd.merge(sick, deaths, how="outer", on="date")
     tmp = pd.merge(tmp, recovers, how="outer", on="date")
 
-    return tmp
+    return {"rmf24": tmp}
