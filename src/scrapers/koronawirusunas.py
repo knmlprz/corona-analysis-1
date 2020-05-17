@@ -26,7 +26,7 @@ def scrape() -> dict:
     return {t[0]: pd.DataFrame(demjson.decode(t[1])) for t in jsdata}
 
 
-def clean(data: pd.DataFrame, cols: list, datecol: str):
+def clean(data: pd.DataFrame, cols: list, new_index_name: str):
     """
     Performs basic cleaning of DataFrame
 
@@ -36,12 +36,12 @@ def clean(data: pd.DataFrame, cols: list, datecol: str):
         pd.DataFrame containing data to clean
     cols : list
         list of cols to extract from DataFrame
-    datecol : str
+    new_index_name : str
         name of col that contains dates, becomes new index
     """
     df = pd.DataFrame(data["dataSource_testy"][cols])
-    df[datecol] = pd.to_datetime(df[datecol], dayfirst=True)
-    df.set_index(datecol, inplace=True, drop=True)
+    df[new_index_name] = pd.to_datetime(df[new_index_name], dayfirst=True)
+    df.set_index(new_index_name, inplace=True, drop=True)
     df.index.name = None
 
     return df
@@ -58,20 +58,20 @@ def get_data():
     # Clean data
     testy = clean(data["dataSource_testy"],
                   cols=data["dataSource_testy"].columns,
-                  datecol="dzien")
+                  new_index_name="dzien")
 
     przyrost = clean(data["dataSource_przyrost"],
                      cols=["country", "zar", "chor", "zgo", "wyl"],
-                     datecol="country")
+                     new_index_name="country")
 
     mobilnosc = clean(data["dataSource_mobilnosc"],
                       cols=["dzien", "pieszo", "pojazdem"],
-                      datecol="dzien")
+                      new_index_name="dzien")
 
     hospitalizacja = clean(data["dataSource_hospitalizacja"],
                            cols=["country", "hosp",
                                  "kwar", "kwar_z", "nadzor"],
-                           datecol="country")
+                           new_index_name="country")
 
     # Merge and return DataFrames
     df = pd.merge(testy, przyrost, how='outer', left_index=True,
