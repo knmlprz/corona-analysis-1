@@ -39,7 +39,7 @@ def clean(data: pd.DataFrame, cols: list, new_index_name: str):
     new_index_name : str
         name of col that contains dates, becomes new index
     """
-    df = pd.DataFrame(data["dataSource_testy"][cols])
+    df = pd.DataFrame(data[cols])
     df[new_index_name] = pd.to_datetime(df[new_index_name], dayfirst=True)
     df.set_index(new_index_name, inplace=True, drop=True)
     df.index.name = None
@@ -85,4 +85,4 @@ def get_data():
 
 
 if __name__ == '__main__':
-    get_data()
+    print(get_data())
