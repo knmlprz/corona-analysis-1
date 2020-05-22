@@ -20,7 +20,7 @@ def save_dataframe(
         subdirectory of ./data to put files into
     """
     data.to_csv(Path(get_path(subdir=subdir), filename + ".csv"),
-                index=False, mode="w+")
+                mode="w+")
 
 
 def save_dataframes(
