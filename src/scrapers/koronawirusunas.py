@@ -90,15 +90,18 @@ def get_data():
                            new_index_name="country")
 
     przyrost_woj = {SUB_SITES[i][12:]: clean(data[i]["dataSource_przyrost"],
-                                             cols=["country", "zar", "chor", "zgo", "wyl"],
-                                             new_index_name="country") for i in range(1, len(data))}
+                                             cols=["country", "zar", "chor",
+                                                   "zgo", "wyl"],
+                                             new_index_name="country")
+                    for i in range(1, len(data))}
 
     # Merge and return DataFrames
     df_poland = pd.merge(testy, przyrost, how='outer', left_index=True,
                          right_index=True)
     df_poland = pd.merge(df_poland, mobilnosc, how='outer', left_index=True,
                          right_index=True)
-    df_poland = pd.merge(df_poland, hospitalizacja, how='outer', left_index=True,
+    df_poland = pd.merge(df_poland, hospitalizacja, how='outer',
+                         left_index=True,
                          right_index=True)
 
     return {"koronawirusunas": df_poland, **przyrost_woj}
