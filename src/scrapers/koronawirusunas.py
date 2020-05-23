@@ -4,16 +4,32 @@ from bs4 import BeautifulSoup
 import pandas as pd
 import demjson
 
-URL = "https://www.koronawirusunas.pl"
-PATTERN = re.compile(r"var\sdataSource_mobilnosc")
+URL = "https://www.koronawirusunas.pl/{}"
+PATTERN = re.compile(r"var\sdataSource_przyrost")
+SUB_SITES = ("",
+             "wojewodztwo-slaskie",
+             "wojewodztwo-mazowieckie",
+             "wojewodztwo-dolnoslaskie",
+             "wojewodztwo-wielkopolskie",
+             "wojewodztwo-lodzkie",
+             "wojewodztwo-malopolskie",
+             "wojewodztwo-opolskie",
+             "wojewodztwo-kujawsko-pomorskie",
+             "wojewodztwo-pomorskie",
+             "wojewodztwo-zachodniopomorskie",
+             "wojewodztwo-lubelskie",
+             "wojewodztwo-podkarpackie",
+             "wojewodztwo-swietokrzyskie",
+             "wojewodztwo-warminsko-mazurskie",
+             "wojewodztwo-lubuskie")
 
 
-def scrape() -> dict:
+def scrape(url=URL) -> dict:
     """
     Scrapes datasets from koronawirus.pl
 
     """
-    web = urllib.request.urlopen(URL)
+    web = urllib.request.urlopen(url)
     soup = BeautifulSoup(web.read(), "lxml")
 
     # Get first script tag that contains PATTERN
@@ -53,35 +69,39 @@ def get_data():
     """
 
     # Load data
-    data = scrape()
+    data = [scrape(url=URL.format(sub)) for sub in SUB_SITES]
 
-    # Clean data
-    testy = clean(data["dataSource_testy"],
-                  cols=data["dataSource_testy"].columns,
+    # Clean data for whole country
+    testy = clean(data[0]["dataSource_testy"],
+                  cols=data[0]["dataSource_testy"].columns,
                   new_index_name="dzien")
 
-    przyrost = clean(data["dataSource_przyrost"],
+    przyrost = clean(data[0]["dataSource_przyrost"],
                      cols=["country", "zar", "chor", "zgo", "wyl"],
                      new_index_name="country")
 
-    mobilnosc = clean(data["dataSource_mobilnosc"],
+    mobilnosc = clean(data[0]["dataSource_mobilnosc"],
                       cols=["dzien", "pieszo", "pojazdem"],
                       new_index_name="dzien")
 
-    hospitalizacja = clean(data["dataSource_hospitalizacja"],
+    hospitalizacja = clean(data[0]["dataSource_hospitalizacja"],
                            cols=["country", "hosp",
                                  "kwar", "kwar_z", "nadzor"],
                            new_index_name="country")
 
-    # Merge and return DataFrames
-    df = pd.merge(testy, przyrost, how='outer', left_index=True,
-                  right_index=True)
-    df = pd.merge(df, mobilnosc, how='outer', left_index=True,
-                  right_index=True)
-    df = pd.merge(df, hospitalizacja, how='outer', left_index=True,
-                  right_index=True)
+    przyrost_woj = {SUB_SITES[i][12:]: clean(data[i]["dataSource_przyrost"],
+                                             cols=["country", "zar", "chor", "zgo", "wyl"],
+                                             new_index_name="country") for i in range(1, len(data))}
 
-    return {"koronawirusunas": df}
+    # Merge and return DataFrames
+    df_poland = pd.merge(testy, przyrost, how='outer', left_index=True,
+                         right_index=True)
+    df_poland = pd.merge(df_poland, mobilnosc, how='outer', left_index=True,
+                         right_index=True)
+    df_poland = pd.merge(df_poland, hospitalizacja, how='outer', left_index=True,
+                         right_index=True)
+
+    return {"koronawirusunas": df_poland, **przyrost_woj}
 
 
 if __name__ == '__main__':
