@@ -43,9 +43,7 @@ def get_data(end_date: str,
     decoder = JSONDecoder()
     binary_data = request.urlopen(
         url.format(station, start_date, end_date, key)).read()
-    print(binary_data)
     data = decoder.decode(binary_data.decode("utf8"))["data"]
-    print(data)
 
     return data
 
