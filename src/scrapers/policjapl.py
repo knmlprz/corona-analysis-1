@@ -6,7 +6,7 @@ from time import sleep
 URL = r"http://policja.pl/pol/form/1,Informacja-dzienna.html?page={}"
 
 
-def scrape(npages: int = 10, delay: float = 0.1):
+def scrape(npages: int = 10, delay: float = 0.5):
     """
     Scrapes dataset from http://policja.pl/pol/form/1,Informacja-dzienna.html
 
@@ -30,4 +30,12 @@ def scrape(npages: int = 10, delay: float = 0.1):
             except urllib.error.HTTPError:
                 print("Http error. Trying again... ", file=stderr)
                 sleep(delay)
+            except ConnectionResetError:
+                print("ConnectionResetError error. Trying again... ",
+                      file=stderr)
+                sleep(delay)
     return {"policjapl": pd.concat(data)}
+
+
+if __name__ == '__main__':
+    print(scrape(delay=2))
