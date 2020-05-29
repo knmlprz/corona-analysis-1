@@ -22,7 +22,7 @@ def scrape(npages: int = 10, delay: float = 0.5):
 
     for i in range(0, npages):
         # Try again max 100 times
-        for attempt in range(0, 100):
+        for _ in range(0, 100):
             try:
                 # Load and parse first table in URL to df
                 data.append(pd.read_html(URL.format(i), skiprows=1)[0])
