@@ -26,9 +26,6 @@ def get_data(url=URL):
     # Drop unused cols
     df.drop(axis=1, labels=["Herb", "Flaga"], inplace=True)
 
-    # Dorop empty rows
-    df.dropna(axis=0, inplace=True)
-
     return {"demografia": df}
 
 
