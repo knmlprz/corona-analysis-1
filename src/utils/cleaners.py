@@ -19,18 +19,6 @@ def fix_numerical(text: str):
     return text
 
 
-def fix_numerical_series(series: pd.Series):
-    """
-    Fixes numerical value in pd.Series so that it can be parsed by pandas
-
-    Parameters
-    ----------
-    series : pd.Series
-
-    """
-    return series.apply(fix_numerical)
-
-
 def strip_accents(text):
     """
     Strips accents from text

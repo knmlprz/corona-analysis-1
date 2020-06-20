@@ -4,7 +4,7 @@ https://pl.wikipedia.org/wiki/Wojew%C3%B3dztwo
 """
 
 import pandas as pd
-from src.utils.cleaners import fix_numerical_series, strip_accents
+from src.utils.cleaners import fix_numerical, strip_accents
 
 URL = r"https://pl.wikipedia.org/wiki/Wojew%C3%B3dztwo"
 
@@ -22,7 +22,8 @@ def clean(data: pd.DataFrame):
         """
 
     data = data.drop(columns=["TERYT", "Miasta – siedziby województw",
-                              "Wyróżnik województwa na tablicachrejestracyjnych"])
+                              "Wyróżnik województwa na "
+                              "tablicachrejestracyjnych"])
 
     data.rename(columns={
         "Województwo": "wojewodztwo",
@@ -36,7 +37,7 @@ def clean(data: pd.DataFrame):
 
     # Fix numerical values in DataFrame
     cols = data.columns.drop('wojewodztwo', 'gestosc_zal')
-    data[cols] = data[cols].apply(fix_numerical_series)
+    data[cols] = data[cols].applymap(fix_numerical)
     data[cols] = data[cols].apply(pd.to_numeric)
 
     # Strip accents
