@@ -23,6 +23,7 @@ Deutscher Wetterdienst (DWD)
 ## Installation
 ```
 $ git clone https://github.com/prz-ml/corona-analysis-1.git 
+$ cd corona-analysis-1
 $ python -m pip install -r requirements.txt
 ```
 
