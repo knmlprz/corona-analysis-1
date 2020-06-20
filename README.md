@@ -19,3 +19,17 @@ Deutscher Wetterdienst (DWD)
 * [Polish Police statistics](http://policja.pl/pol/form/1,dok.html)
 * [Koronawirusunas](http://koronawirusunas.pl)
 * [IHME](http://www.healthdata.org/)
+
+## Installation
+```
+$ git clone https://github.com/prz-ml/corona-analysis-1.git 
+$ python -m pip install -r requirements.txt
+```
+
+## Usage
+All the scripts in `src/scrapers` contain `get_data()` that gathers and cleans 
+dataset of choice.
+```
+from src.scrapers import koronawirusunas
+koronawirusunas.get_data()
+```
