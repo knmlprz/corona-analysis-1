@@ -3,6 +3,7 @@ import urllib.request
 from bs4 import BeautifulSoup
 import pandas as pd
 import demjson
+import numpy as np
 
 URL = "https://www.koronawirusunas.pl/{}"
 PATTERN = re.compile(r"var\sdataSource_przyrost")
@@ -64,6 +65,44 @@ def clean(data: pd.DataFrame, cols: list, new_index_name: str):
     return df
 
 
+def clean_regions(data: dict):
+    """
+    Performs full cleaning of region data in dict
+
+    Attributes
+    ----------
+    data : dict
+        dict containing pd.Dataframe
+    """
+    df_regions = pd.DataFrame()
+
+    for key in data.keys():
+        data[key].fillna(axis=1, inplace=True, value=0)
+        data[key]["wojewodztwo"] = np.nan
+        data[key].fillna(axis=1, inplace=True, value=key)
+        data[key]["date"] = (data[key].index - data[
+            key].index.min()) / np.timedelta64(1, 'D')
+        df_regions = df_regions.append(data[key])
+
+    return df_regions
+
+
+def clean_country(data: pd.DataFrame):
+    """
+    Performs full cleaning of country data
+
+    Attributes
+    ----------
+    data : pd.DataFrame
+        dict containing pd.DataFrame
+    """
+    data['kwar_z'].fillna(0, inplace=True)
+    data.fillna(method='ffill', inplace=True)
+    data.fillna(0, inplace=True)
+
+    return data
+
+
 def get_data():
     """
     Prepares and outputs cleaned DataFrame
@@ -90,11 +129,14 @@ def get_data():
                                  "kwar", "kwar_z", "nadzor"],
                            new_index_name="country")
 
-    przyrost_woj = {SUB_SITES[i][12:]: clean(data[i]["dataSource_przyrost"],
-                                             cols=["country", "zar", "chor",
-                                                   "zgo", "wyl"],
-                                             new_index_name="country")
-                    for i in range(1, len(data))}
+    # Clean each region
+    regions = {SUB_SITES[i][12:]: clean(data[i]["dataSource_przyrost"],
+                                        cols=["country", "zar", "chor",
+                                              "zgo", "wyl"],
+                                        new_index_name="country")
+               for i in range(1, len(data))}
+
+    df_regions = clean_regions(regions)
 
     # Merge and return DataFrames
     df_poland = pd.merge(testy, przyrost, how='outer', left_index=True,
@@ -105,7 +147,10 @@ def get_data():
                          left_index=True,
                          right_index=True)
 
-    return {"koronawirusunas": df_poland, **przyrost_woj}
+    df_poland = clean_country(df_poland)
+
+    return {"koronawirusunas_poland": df_poland,
+            "koronawirusunas_regions": df_regions}
 
 
 if __name__ == '__main__':
