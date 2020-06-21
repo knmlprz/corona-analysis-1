@@ -39,8 +39,8 @@ def clean(data: pd.DataFrame):
 
     # Extract interesting cols
     data = data.loc[:,
-           ['wojewodztwo', 'miasta', 'powiaty', 'm_powiaty', 'gminy_ogolem',
-            'miejskie', 'wiejskie', 'miejsko-wiejskie']]
+                    ['wojewodztwo', 'miasta', 'powiaty', 'm_powiaty', 'gminy_ogolem',
+                     'miejskie', 'wiejskie', 'miejsko-wiejskie']]
 
     # Strip accents
     data['wojewodztwo'] = data['wojewodztwo'].apply(strip_accents)
