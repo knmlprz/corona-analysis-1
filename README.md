@@ -30,7 +30,9 @@ $ python -m pip install -r requirements.txt
 ## Usage
 All the scripts in `src/scrapers` contain `get_data()` that gathers and cleans 
 dataset of choice.
-```
+```python
 from src.scrapers import koronawirusunas
 koronawirusunas.get_data()
 ```
+**Gathering some datasets may require an api key. Currently only `meteostat` 
+scraper requires it.**

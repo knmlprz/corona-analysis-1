@@ -1,5 +1,5 @@
 import pandas as pd
-from src.utils.paths import get_path
+from corona_analysis.utils.paths import get_path
 from pathlib import Path
 
 

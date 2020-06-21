@@ -8,8 +8,8 @@ from urllib import request
 import pandas as pd
 from bs4 import BeautifulSoup
 
-from src.utils.affixes import remove_prefix
-from src.utils.affixes import remove_suffix
+from corona_analysis.utils.affixes import remove_prefix
+from corona_analysis.utils.affixes import remove_suffix
 
 URL = "https://www.rmf.fm/inc/outer/korona-wykres/wykres.html"
 
