@@ -1,5 +1,6 @@
 import pandas as pd
 import urllib
+import urllib.error
 from sys import stderr
 from time import sleep
 
