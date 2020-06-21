@@ -45,16 +45,4 @@ def get_data(end_date: str,
         url.format(station, start_date, end_date, key)).read()
     data = decoder.decode(binary_data.decode("utf8"))["data"]
 
-    return data
-
-
-def convert(data: dict) -> pd.DataFrame:
-    """
-    Converts dict to dataframe
-
-    Parameters
-    ----------
-    data : dict
-        dict to be converted
-    """
-    return pd.DataFrame(data)
+    return {"meteostat": pd.DataFrame(data)}

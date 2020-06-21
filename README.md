@@ -1,6 +1,6 @@
 # Corona analysis 1
 
-This repository is made to gather all data about SARS-CoV-2 disease spreading in 
+This repository is made to gather all data about spreading of SARS-CoV-2 in 
 Poland.
 
 ## Requirements
@@ -36,4 +36,4 @@ from corona_analysis.scrapers import koronawirusunas
 koronawirusunas.get_data()
 ```
 **Gathering some datasets may require an api key. Currently only `meteostat` 
-scraper requires it.**
+scraper requires one.**
