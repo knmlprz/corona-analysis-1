@@ -4,7 +4,7 @@ https://pl.wikipedia.org/wiki/Wojew%C3%B3dztwo
 """
 
 import pandas as pd
-from src.utils.cleaners import fix_numerical, strip_accents
+from corona_analysis.utils.cleaners import fix_numerical, strip_accents
 
 URL = r"https://pl.wikipedia.org/wiki/Wojew%C3%B3dztwo"
 

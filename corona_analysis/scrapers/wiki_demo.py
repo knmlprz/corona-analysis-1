@@ -4,7 +4,7 @@ https://pl.wikipedia.org/wiki/Podzia%C5%82_administracyjny_Polski
 """
 
 import pandas as pd
-from src.utils.cleaners import strip_accents
+from corona_analysis.utils.cleaners import strip_accents
 
 URL = r"https://pl.wikipedia.org/wiki/Podzia%C5%82_administracyjny_Polski"
 
