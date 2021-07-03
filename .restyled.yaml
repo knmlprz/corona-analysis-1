@@ -13,3 +13,8 @@ restylers:
             - "**/*.py"
         interpreters:
             - python
+    - black:
+        include:
+            - "**/*.py"
+        interpreters:
+            - python
