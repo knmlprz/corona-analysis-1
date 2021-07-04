@@ -1,10 +1,10 @@
 ---
-title: Analiza rozprzestrzeniania się koronawirusa w początkowym okresie pandemii
+title: Zaraźliwość koronawirusa
 author:
   - Patryk Gronkiewicz
   - Piotr Krawiec
 abstract: |
-  Lorem ipsum dolor sit amet
+  Analiza rozprzestrzeniania się koronawirusa w początkowym okresie pandemii
 ---
 
 # Document Title
