@@ -1,10 +1,12 @@
 ---
 title: Zaraźliwość koronawirusa
+subtitle: Analiza rozprzestrzeniania się koronawirusa w początkowym okresie pandemii
 author:
   - Patryk Gronkiewicz
   - Piotr Krawiec
-abstract: |
-  Analiza rozprzestrzeniania się koronawirusa w początkowym okresie pandemii
+theme: Dresden
+colorscheme: orchid
+lang: pl
 ---
 
 # Dlaczego akurat takie dane?
