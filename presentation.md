@@ -4,9 +4,10 @@ subtitle: Analiza rozprzestrzeniania się koronawirusa w początkowym okresie pa
 author:
   - Patryk Gronkiewicz
   - Piotr Krawiec
+lang: pl
 theme: Dresden
 colorscheme: orchid
-lang: pl
+fonttheme: professionalfonts
 ---
 
 # Dlaczego akurat takie dane?
