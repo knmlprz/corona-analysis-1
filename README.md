@@ -1,6 +1,6 @@
 # Corona analysis 1
 
-This repository is made to gather all data about spreading of SARS-CoV-2 in 
+This repository exists to gather all data about spreading of SARS-CoV-2 in 
 Poland.
 
 ## Requirements
