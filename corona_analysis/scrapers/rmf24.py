@@ -87,19 +87,19 @@ def get_data(sick: List[int], deaths: List[int], recoveries: List[int], vaccinat
         list of lists with date and amount of recovered people
     """
 
-    sick = pd.DataFrame(sick)
-    sick.columns = ("date", "sick")
+    sickDF = pd.DataFrame(sick)
+    sickDF.columns = ("date", "sick")
 
-    deaths = pd.DataFrame(deaths)
-    deaths.columns = ("date", "deaths")
+    deathsDF = pd.DataFrame(deaths)
+    deathsDF.columns = ("date", "deaths")
 
-    recoveries = pd.DataFrame(recoveries)
-    recoveries.columns = ("date", "recoveries")
+    recoveriesDF = pd.DataFrame(recoveries)
+    recoveriesDF.columns = ("date", "recoveries")
 
-    vaccinations = pd.DataFrame(vaccinations)
-    vaccinations.columns = ("date", "vaccinations")
+    vaccinationsDF = pd.DataFrame(vaccinations)
+    vaccinationsDF.columns = ("date", "vaccinations")
 
-    tmp = pd.merge(sick, deaths, how="outer", on="date")
-    tmp = pd.merge(tmp, recoveries, how="outer", on="date")
+    tmp = pd.merge(sickDF, deathsDF, how="outer", on="date")
+    tmp = pd.merge(tmp, recoveriesDF, how="outer", on="date")
 
     return {"rmf24": tmp}
