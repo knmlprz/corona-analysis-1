@@ -75,8 +75,6 @@ def get_data(sick: List[int], deaths: List[int], recoveries: List[int], vaccinat
     """
     Returns dataframe of deaths, recovered and sick people
 
-    ...
-
     Attributes
     ----------
     sick : list
@@ -85,6 +83,11 @@ def get_data(sick: List[int], deaths: List[int], recoveries: List[int], vaccinat
         list of lists with date and amount of dead people
     recovers : list
         list of lists with date and amount of recovered people
+
+    Returns
+    -------
+    dict
+        "rmf24" with dataframe
     """
 
     sickDF = pd.DataFrame(sick)
