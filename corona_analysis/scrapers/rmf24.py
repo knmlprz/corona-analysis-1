@@ -101,5 +101,6 @@ def get_data(sick: List[int], deaths: List[int], recoveries: List[int], vaccinat
 
     tmp = pd.merge(sickDF, deathsDF, how="outer", on="date")
     tmp = pd.merge(tmp, recoveriesDF, how="outer", on="date")
+    tmp = pd.merge(tmp, vaccinationsDF, how="outer", on="date")
 
     return {"rmf24": tmp}
