@@ -81,9 +81,9 @@ def clean_regions(data: dict):
         data[key].fillna(axis=1, inplace=True, value=0)
         data[key]["wojewodztwo"] = np.nan
         data[key].fillna(axis=1, inplace=True, value=key)
-        data[key]["date"] = (
-            data[key].index - data[key].index.min()
-        ) / np.timedelta64(1, "D")
+        data[key]["date"] = (data[key].index - data[key].index.min()) / np.timedelta64(
+            1, "D"
+        )
         df_regions = df_regions.append(data[key])
 
     return df_regions
