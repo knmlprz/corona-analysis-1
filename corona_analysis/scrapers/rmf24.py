@@ -66,7 +66,8 @@ def scrape(data_url: str = URL) -> Dict[str, Any]:
 
     sick = [["-".join(i[0][1:].split(",")), i[1]] for i in sick]
     deaths = [["-".join(i[0][1:].split(",")), i[1]] for i in deaths]
-    vaccinations = [["-".join(i[0][1:].split(",")), i[1]] for i in vaccinations]
+    vaccinations = [["-".join(i[0][1:].split(",")), i[1]]
+                    for i in vaccinations]
 
     return {"sick": sick, "deaths": deaths, "recovers": recoveries, "vaccinations": vaccinations}
 
