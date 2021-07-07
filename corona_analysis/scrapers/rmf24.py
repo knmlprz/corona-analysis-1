@@ -66,13 +66,19 @@ def scrape(data_url: str = URL) -> Dict[str, Any]:
 
     sick = [["-".join(i[0][1:].split(",")), i[1]] for i in sick]
     deaths = [["-".join(i[0][1:].split(",")), i[1]] for i in deaths]
-    vaccinations = [["-".join(i[0][1:].split(",")), i[1]]
-                    for i in vaccinations]
+    vaccinations = [["-".join(i[0][1:].split(",")), i[1]] for i in vaccinations]
 
-    return {"sick": sick, "deaths": deaths, "recovers": recoveries, "vaccinations": vaccinations}
+    return {
+        "sick": sick,
+        "deaths": deaths,
+        "recovers": recoveries,
+        "vaccinations": vaccinations,
+    }
 
 
-def get_data(sick: List[int], deaths: List[int], recoveries: List[int], vaccinations: List[int]) -> Dict[str, pd.DataFrame]:
+def get_data(
+    sick: List[int], deaths: List[int], recoveries: List[int], vaccinations: List[int]
+) -> Dict[str, pd.DataFrame]:
     """
     Returns dataframe of deaths, recovered and sick people
 
