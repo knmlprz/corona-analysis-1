@@ -4,3 +4,4 @@ demjson
 statsmodels
 seaborn
 sklearn
+ipywidgets
