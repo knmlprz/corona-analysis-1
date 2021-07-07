@@ -6,24 +6,26 @@ import demjson
 import numpy as np
 
 URL = "https://www.koronawirusunas.pl/{}"
-PATTERN = re.compile(r"var\sdataSource_przyrost")
-SUB_SITES = ("",
-             "wojewodztwo-slaskie",
-             "wojewodztwo-mazowieckie",
-             "wojewodztwo-dolnoslaskie",
-             "wojewodztwo-wielkopolskie",
-             "wojewodztwo-lodzkie",
-             "wojewodztwo-malopolskie",
-             "wojewodztwo-opolskie",
-             "wojewodztwo-kujawsko-pomorskie",
-             "wojewodztwo-pomorskie",
-             "wojewodztwo-zachodniopomorskie",
-             "wojewodztwo-podlaskie",
-             "wojewodztwo-lubelskie",
-             "wojewodztwo-podkarpackie",
-             "wojewodztwo-swietokrzyskie",
-             "wojewodztwo-warminsko-mazurskie",
-             "wojewodztwo-lubuskie")
+PATTERN = re.compile(r"var dataSource_przyrost|var dataSource_koronawirus")
+SUB_SITES = (
+    "",
+    "wojewodztwo-slaskie",
+    "wojewodztwo-mazowieckie",
+    "wojewodztwo-dolnoslaskie",
+    "wojewodztwo-wielkopolskie",
+    "wojewodztwo-lodzkie",
+    "wojewodztwo-malopolskie",
+    "wojewodztwo-opolskie",
+    "wojewodztwo-kujawsko-pomorskie",
+    "wojewodztwo-pomorskie",
+    "wojewodztwo-zachodniopomorskie",
+    "wojewodztwo-podlaskie",
+    "wojewodztwo-lubelskie",
+    "wojewodztwo-podkarpackie",
+    "wojewodztwo-swietokrzyskie",
+    "wojewodztwo-warminsko-mazurskie",
+    "wojewodztwo-lubuskie",
+)
 
 
 def scrape(url=URL) -> dict:
@@ -35,11 +37,10 @@ def scrape(url=URL) -> dict:
     soup = BeautifulSoup(web.read(), "lxml")
 
     # Get first script tag that contains PATTERN
-    script = soup.find('script', text=PATTERN)
+    script = soup.find("script", text=re.compile(PATTERN))
 
     # Group all vars to ('var name,'[data]')
-    jsdata = re.findall(
-        r'var\s*(.*?)\s*=(\s*\[[\s\S]*?\]);', script.string)
+    jsdata = re.findall(r"var\s*(.*?)\s*=(\s*\[[\s\S]*?]);", script.string)
 
     return {t[0]: pd.DataFrame(demjson.decode(t[1])) for t in jsdata}
 
@@ -80,8 +81,9 @@ def clean_regions(data: dict):
         data[key].fillna(axis=1, inplace=True, value=0)
         data[key]["wojewodztwo"] = np.nan
         data[key].fillna(axis=1, inplace=True, value=key)
-        data[key]["date"] = (data[key].index - data[
-            key].index.min()) / np.timedelta64(1, 'D')
+        data[key]["date"] = (
+            data[key].index - data[key].index.min()
+        ) / np.timedelta64(1, "D")
         df_regions = df_regions.append(data[key])
 
     return df_regions
@@ -96,8 +98,8 @@ def clean_country(data: pd.DataFrame):
     data : pd.DataFrame
         dict containing pd.DataFrame
     """
-    data['kwar_z'].fillna(0, inplace=True)
-    data.fillna(method='ffill', inplace=True)
+    data["kwar_z"].fillna(0, inplace=True)
+    data.fillna(method="ffill", inplace=True)
     data.fillna(0, inplace=True)
 
     return data
@@ -112,46 +114,64 @@ def get_data():
     data = [scrape(url=URL.format(sub)) for sub in SUB_SITES]
 
     # Clean data for whole country
-    testy = clean(data[0]["dataSource_testy"],
-                  cols=data[0]["dataSource_testy"].columns,
-                  new_index_name="dzien")
+    testy = clean(
+        data[0]["dataSource_testy"],
+        cols=data[0]["dataSource_testy"].columns,
+        new_index_name="dzien",
+    )
 
-    przyrost = clean(data[0]["dataSource_przyrost"],
-                     cols=["country", "zar", "chor", "zgo", "wyl"],
-                     new_index_name="country")
+    przyrost = clean(
+        data[0]["dataSource_przyrost"],
+        cols=["country", "zar", "chor", "zgo", "wyl"],
+        new_index_name="country",
+    )
 
-    mobilnosc = clean(data[0]["dataSource_mobilnosc"],
-                      cols=["dzien", "pieszo", "pojazdem"],
-                      new_index_name="dzien")
+    mobilnosc = clean(
+        data[0]["dataSource_mobilnosc"],
+        cols=["dzien", "chorzy_prev", "pieszo", "pojazdem"],
+        new_index_name="dzien",
+    )
 
-    hospitalizacja = clean(data[0]["dataSource_hospitalizacja"],
-                           cols=["country", "hosp",
-                                 "kwar", "kwar_z", "nadzor"],
-                           new_index_name="country")
+    hospitalizacja = clean(
+        data[0]["dataSource_hospitalizacja"],
+        cols=["country", "kwar", "kwar_z", "nadzor"],
+        new_index_name="country",
+    )
 
     # Clean each region
-    regions = {SUB_SITES[i][12:]: clean(data[i]["dataSource_przyrost"],
-                                        cols=["country", "zar", "chor",
-                                              "zgo", "wyl"],
-                                        new_index_name="country")
-               for i in range(1, len(data))}
+    regions = {
+        SUB_SITES[i][12:]: clean(
+            data[i]["dataSource_koronawirus"],
+            cols=["dzien", "woj_zar", "woj_chor", "woj_zgo", "woj_wyl"],
+            new_index_name="dzien",
+        )
+        for i in range(1, len(data))
+    }
 
     df_regions = clean_regions(regions)
 
     # Merge and return DataFrames
-    df_poland = pd.merge(testy, przyrost, how='outer', left_index=True,
-                         right_index=True)
-    df_poland = pd.merge(df_poland, mobilnosc, how='outer', left_index=True,
-                         right_index=True)
-    df_poland = pd.merge(df_poland, hospitalizacja, how='outer',
-                         left_index=True,
-                         right_index=True)
+    df_poland = pd.merge(
+        testy, przyrost, how="outer", left_index=True, right_index=True
+    )
+    df_poland = pd.merge(
+        df_poland, mobilnosc, how="outer", left_index=True, right_index=True
+    )
+    df_poland = pd.merge(
+        df_poland,
+        hospitalizacja,
+        how="outer",
+        left_index=True,
+        right_index=True,
+    )
 
     df_poland = clean_country(df_poland)
 
-    return {"koronawirusunas_poland": df_poland,
-            "koronawirusunas_regions": df_regions}
+    return {
+        "koronawirusunas_poland": df_poland,
+        "koronawirusunas_regions": df_regions,
+    }
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     print(get_data())
