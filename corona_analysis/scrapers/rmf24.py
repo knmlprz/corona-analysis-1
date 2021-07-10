@@ -4,7 +4,7 @@ This module gathers data from RMF24 chart
 
 import re
 from urllib import request
-from typing import List, Dict, Any, Optional
+from typing import Dict, Any
 
 import pandas as pd
 from bs4 import BeautifulSoup
