@@ -68,7 +68,12 @@ def scrape(data_url: str = URL) -> Dict[str, Any]:
     deaths = [["-".join(i[0][1:].split(",")), i[1]] for i in deaths]
     vaccinations = [["-".join(i[0][1:].split(",")), i[1]] for i in vaccinations]
 
-    return {"sick": sick, "deaths": deaths, "recovers": recoveries, "vaccinations": vaccinations}
+    return {
+        "sick": sick,
+        "deaths": deaths,
+        "recovers": recoveries,
+        "vaccinations": vaccinations,
+    }
 
 
 def get_data(url: str = URL) -> Dict[str, pd.DataFrame]:
