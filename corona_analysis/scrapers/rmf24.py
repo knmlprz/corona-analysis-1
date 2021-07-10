@@ -4,7 +4,7 @@ This module gathers data from RMF24 chart
 
 import re
 from urllib import request
-from typing import List, Dict, Any
+from typing import List, Dict, Any, Optional
 
 import pandas as pd
 from bs4 import BeautifulSoup
@@ -71,7 +71,7 @@ def scrape(data_url: str = URL) -> Dict[str, Any]:
     return {"sick": sick, "deaths": deaths, "recovers": recoveries, "vaccinations": vaccinations}
 
 
-def get_data(sick: List[int], deaths: List[int], recoveries: List[int], vaccinations: List[int]) -> Dict[str, pd.DataFrame]:
+def get_data(url: str = URL) -> Dict[str, pd.DataFrame]:
     """
     Returns dataframe of deaths, recovered and sick people
 
@@ -89,17 +89,18 @@ def get_data(sick: List[int], deaths: List[int], recoveries: List[int], vaccinat
     dict
         "rmf24" with dataframe
     """
+    data = scrape(URL)
 
-    sickDF = pd.DataFrame(sick)
+    sickDF = pd.DataFrame(data["sick"])
     sickDF.columns = ("date", "sick")
 
-    deathsDF = pd.DataFrame(deaths)
+    deathsDF = pd.DataFrame(data["deaths"])
     deathsDF.columns = ("date", "deaths")
 
-    recoveriesDF = pd.DataFrame(recoveries)
+    recoveriesDF = pd.DataFrame(data["recoveries"])
     recoveriesDF.columns = ("date", "recoveries")
 
-    vaccinationsDF = pd.DataFrame(vaccinations)
+    vaccinationsDF = pd.DataFrame(data["vaccinations"])
     vaccinationsDF.columns = ("date", "vaccinations")
 
     tmp = pd.merge(sickDF, deathsDF, how="outer", on="date")
