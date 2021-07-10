@@ -19,7 +19,6 @@ def scrape(data_url: str = URL) -> Dict[str, Any]:
     """
     Scrapes data from rmf's chart
 
-    ...
 
     Attributes
     ----------

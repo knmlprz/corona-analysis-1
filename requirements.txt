@@ -1,4 +1,5 @@
 pandas
+numpy
 beautifulsoup4
 demjson
 statsmodels
