@@ -4,6 +4,7 @@ This module gathers data from RMF24 chart
 
 import re
 from urllib import request
+from typing import Dict, Any
 
 import pandas as pd
 from bs4 import BeautifulSoup
@@ -14,11 +15,10 @@ from corona_analysis.utils.affixes import remove_suffix
 URL = "https://www.rmf.fm/inc/outer/korona-wykres/wykres.html"
 
 
-def scrape(data_url: str = URL) -> dict:
+def scrape(data_url: str = URL) -> Dict[str, Any]:
     """
     Scrapes data from rmf's chart
 
-    ...
 
     Attributes
     ----------
@@ -34,11 +34,12 @@ def scrape(data_url: str = URL) -> dict:
     data = str(soup.body.find("script"))
 
     # find lists of data
-    (sick, deaths, recovers) = re.findall(r"\[\[.*\]\]", data)
+    (sick, deaths, recoveries, vaccinations) = re.findall(r"\[\[.*\]\]", data)
 
     sick = sick.split("],[")
     deaths = deaths.split("],[")
-    recovers = recovers.split("],[")
+    recoveries = recoveries.split("],[")
+    vaccinations = vaccinations.split("],[")
 
     sick = [
         remove_suffix(remove_prefix(remove_prefix(i, "[["), "Date.UTC"), "]]")
@@ -48,27 +49,35 @@ def scrape(data_url: str = URL) -> dict:
         remove_suffix(remove_prefix(remove_prefix(i, "[["), "Date.UTC"), "]]")
         for i in deaths
     ]
-    recovers = [
+    recoveries = [
         remove_suffix(remove_prefix(remove_prefix(i, "[["), "Date.UTC"), "]]")
-        for i in recovers
+        for i in recoveries
+    ]
+    vaccinations = [
+        remove_suffix(remove_prefix(remove_prefix(i, "[["), "Date.UTC"), "]]")
+        for i in vaccinations
     ]
 
     sick = [i.split("),") for i in sick]
     deaths = [i.split("),") for i in deaths]
-    recovers = [i.split("),") for i in recovers]
+    recoveries = [i.split("),") for i in recoveries]
+    vaccinations = [i.split("),") for i in vaccinations]
 
     sick = [["-".join(i[0][1:].split(",")), i[1]] for i in sick]
     deaths = [["-".join(i[0][1:].split(",")), i[1]] for i in deaths]
-    recovers = [["-".join(i[0][1:].split(",")), i[1]] for i in recovers]
+    vaccinations = [["-".join(i[0][1:].split(",")), i[1]] for i in vaccinations]
 
-    return {"sick": sick, "deaths": deaths, "recovers": recovers}
+    return {
+        "sick": sick,
+        "deaths": deaths,
+        "recovers": recoveries,
+        "vaccinations": vaccinations,
+    }
 
 
-def get_data(sick: list, deaths: list, recovers: list) -> dict:
+def get_data(url: str = URL) -> Dict[str, pd.DataFrame]:
     """
     Returns dataframe of deaths, recovered and sick people
-
-    ...
 
     Attributes
     ----------
@@ -78,18 +87,28 @@ def get_data(sick: list, deaths: list, recovers: list) -> dict:
         list of lists with date and amount of dead people
     recovers : list
         list of lists with date and amount of recovered people
+
+    Returns
+    -------
+    dict
+        "rmf24" with dataframe
     """
+    data = scrape(URL)
 
-    sick = pd.DataFrame(sick)
-    sick.columns = ("date", "sick")
+    sickDF = pd.DataFrame(data["sick"])
+    sickDF.columns = ("date", "sick")
 
-    deaths = pd.DataFrame(deaths)
-    deaths.columns = ("date", "deaths")
+    deathsDF = pd.DataFrame(data["deaths"])
+    deathsDF.columns = ("date", "deaths")
 
-    recovers = pd.DataFrame(recovers)
-    recovers.columns = ("date", "recovers")
+    recoveriesDF = pd.DataFrame(data["recoveries"])
+    recoveriesDF.columns = ("date", "recoveries")
 
-    tmp = pd.merge(sick, deaths, how="outer", on="date")
-    tmp = pd.merge(tmp, recovers, how="outer", on="date")
+    vaccinationsDF = pd.DataFrame(data["vaccinations"])
+    vaccinationsDF.columns = ("date", "vaccinations")
+
+    tmp = pd.merge(sickDF, deathsDF, how="outer", on="date")
+    tmp = pd.merge(tmp, recoveriesDF, how="outer", on="date")
+    tmp = pd.merge(tmp, vaccinationsDF, how="outer", on="date")
 
     return {"rmf24": tmp}
