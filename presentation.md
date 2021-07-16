@@ -11,7 +11,7 @@ abstract: |
 
 Jesteśmy studentami Politechniki Rzeszowskiej na kierunku Inżynieria i analiza danych,
 a także członkami nowo stworzonego koła uczenia maszynowego.
-
+[//]: # (Dodać logo koła naukowego)
 
 # Nasz cel
 
