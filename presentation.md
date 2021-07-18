@@ -7,30 +7,45 @@ abstract: |
   Lorem ipsum dolor sit amet
 ---
 
-
 # Źródła danych
 
-To było pierwszym sporym wyzwaniem w naszym projekcie, ponieważ szczególnie na początku
-pandemii dostęp do szczegółowych danych nie był tak prosty, ponieważ: 
-- na stronie ministerstwa publikowane były wyłącznie dane z danego dnia.
-- publicznie dostępne dane dotyczące wielu krajów nie zawierały podziału na województwa.
+To było pierwszym sporym wyzwaniem w naszym projekcie, ponieważ szczególnie na
+początku pandemii dostęp do szczegółowych danych nie był tak prosty, ponieważ:
 
-Na szczęście udało nam się znaleźć inne źródła, tj. strony tworzone przez ludzi, którzy
-codziennie sami zbierali te dane i udostępniali je w formie wykresów. Przykładem takiej 
-strony jest koronawirusunas.pl . Dzięki danym na niej zawartym udało nam się 
-przeprowadzić.
+- na stronie ministerstwa publikowane były wyłącznie dane z danego dnia.
+- publicznie dostępne dane dotyczące wielu krajów nie zawierały podziału na
+  województwa.
+
+Na szczęście udało nam się znaleźć inne źródła, tj. strony tworzone przez ludzi,
+którzy codziennie sami zbierali te dane i udostępniali je w formie wykresów.
+Przykładem takiej strony jest koronawirusunas.pl . Dzięki danym na niej zawartym
+udało nam się przeprowadzić.
 
 Do głównych źródeł danych zaliczyć możemy:
+
 - IHME
 - koronawirusunas.pl
 - policja.pl
 
 # Techniki zbierania danych
 
-Główną techniką wykorzystywaną przez nas wył web scraping, stworzyliśmy skrypty, które
-(oczywiście za zgodą właścicieli portali) pobierały z nich bieżące dane. Z kolei pozostałe
-dane były udostępnione publicznie w formie skompresowanych plików, także aktualizowanych
-codziennie. 
+Główną techniką wykorzystywaną przez nas wył web scraping, stworzyliśmy skrypty,
+które
+(oczywiście za zgodą właścicieli portali) pobierały z nich bieżące dane. Z kolei
+pozostałe dane były udostępnione publicznie w formie skompresowanych plików,
+także aktualizowanych codziennie.
 
+# Jak pracowaliśmy z danymi
+
+Te dane musiały zostac sprowadzone do wspólnego formatu, tak aby wszystkie
+stworzone wykresy i analizy można było odtwarzać natychmiast po aktualizacji
+danych. Do tego wykorzystaliśmy pythona i Jupyterlab.
+
+Z pomoca jupyterlab można stworzyć interaktywne notatniki, które działają krok
+po kroku, jeden z nich służył wyłącznie do pobrania danych ze wszystkich źródeł
+ich oczyszczenia i sprowadzenia do wspólnego formatu. Same analizy znalazły się
+w osobnym notatniku, co umożliwiło nam zapanowanie nad projektem. Oczywiście
+korzystanie z notatników też ma swoje wady, kolejne zmiany utrzymywane w
+systemie kontroli wersji Git nie są czytalne.
 
 ![](img/zar.png)
