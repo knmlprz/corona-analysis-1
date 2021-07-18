@@ -19,7 +19,11 @@ Chcemy pokazać to, co udało nam się odkryć w trakcie realizacji pierwszego H
 realizowanego w naszym kole, a dotyczył on pandemii. Naszym celem było znalezienie, 
 reguł asocjacyjnych i ciekawych zależności w danych z zachowań, które docelowo miały 
 nam posłużyć do lepszego zrozumienia sposobu rozprzestrzeniania się koronawirusa Sars-Cov-2
-i przewidywania ilości zachorowań.
+i przewidywania ilości zachorowań. 
+
+Pokażemy, w jaki sposób pracowaliśmy, jakich technik używaliśmy i jak zdobyliśmy 
+dane, których używaliśmy. Mamy nadzieję, że są wśród was studenci, których 
+zainteresujemy naszą pracą i dołączą do naszego koła naukowego.
 
 # Dane
 
