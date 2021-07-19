@@ -7,14 +7,21 @@ abstract: |
   Lorem ipsum dolor sit amet
 ---
 
-# Źródła danych
+# Jak znaleźć źródła danych?
 
-To było pierwszym sporym wyzwaniem w naszym projekcie, ponieważ szczególnie na
-początku pandemii dostęp do szczegółowych danych nie był tak prosty, ponieważ:
+To było pierwszym pytaniem jakie zadaliśmy sobie w naszym projekcie, ponieważ szczególnie na
+początku pandemii dostęp do szczegółowych danych nie był tak prosty. Powodów było kilka:
 
 - na stronie ministerstwa publikowane były wyłącznie dane z danego dnia.
 - publicznie dostępne dane dotyczące wielu krajów nie zawierały podziału na
   województwa.
+  
+A nas szczególnie interesowały dane właśnie z podziałem na województwa, ewentualnie
+na jeszcze mniejsze jednostki podziału terytorialnego.
+
+---
+
+# Źródła danych
 
 Na szczęście udało nam się znaleźć inne źródła, tj. strony tworzone przez ludzi,
 którzy codziennie sami zbierali te dane i udostępniali je w formie wykresów.
@@ -27,6 +34,8 @@ Do głównych źródeł danych zaliczyć możemy:
 - koronawirusunas.pl
 - policja.pl
 
+---
+
 # Techniki zbierania danych
 
 Główną techniką wykorzystywaną przez nas wył web scraping, stworzyliśmy skrypty,
@@ -35,11 +44,18 @@ które
 pozostałe dane były udostępnione publicznie w formie skompresowanych plików,
 także aktualizowanych codziennie.
 
+---
+
 # Jak pracowaliśmy z danymi
 
 Te dane musiały zostac sprowadzone do wspólnego formatu, tak aby wszystkie
 stworzone wykresy i analizy można było odtwarzać natychmiast po aktualizacji
-danych. Do tego wykorzystaliśmy pythona i Jupyterlab.
+danych, ponieważ te zmieniały się z dnia na dzień wraz z rozwojem pandemii.
+Do tego wykorzystaliśmy pythona i Jupyterlab.
+
+---
+
+# Jak pracowaliśmy z danymi
 
 Z pomoca jupyterlab można stworzyć interaktywne notatniki, które działają krok
 po kroku, jeden z nich służył wyłącznie do pobrania danych ze wszystkich źródeł
