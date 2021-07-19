@@ -7,9 +7,38 @@ abstract: |
   Lorem ipsum dolor sit amet
 ---
 
+# O nas
+
+Jesteśmy studentami Politechniki Rzeszowskiej na kierunku Inżynieria i analiza danych,
+a także członkami nowo stworzonego koła uczenia maszynowego.
+[//]: # (Dodać logo koła naukowego)
+
+---
+
+# Nasz cel
+
+Chcemy pokazać to, co udało nam się odkryć w trakcie realizacji pierwszego Hackathonu 
+realizowanego w naszym kole, a dotyczył on pandemii. Naszym celem było znalezienie, 
+reguł asocjacyjnych i ciekawych zależności w danych z zachowań, które docelowo miały 
+nam posłużyć do lepszego zrozumienia sposobu rozprzestrzeniania się koronawirusa Sars-Cov-2
+i przewidywania ilości zachorowań. 
+
+Pokażemy, w jaki sposób pracowaliśmy, jakich technik używaliśmy i jak zdobyliśmy 
+dane, których używaliśmy. Mamy nadzieję, że są wśród was studenci, których 
+zainteresujemy naszą pracą i dołączą do naszego koła naukowego.
+
+---
+
+# Dane
+
+Jeszcze, gdy zaczynaliśmy, liczba zachorowań nie przekraczała 500 osób dziennie (był to 
+okres od marca do maja 2020).
+
+---
+
 # Jak znaleźć źródła danych?
 
-To było pierwszym pytaniem jakie zadaliśmy sobie w naszym projekcie, ponieważ szczególnie na
+To było pierwszym pytaniem, jakie zadaliśmy sobie w naszym projekcie, ponieważ szczególnie na
 początku pandemii dostęp do szczegółowych danych nie był tak prosty. Powodów było kilka:
 
 - na stronie ministerstwa publikowane były wyłącznie dane z danego dnia.
