@@ -1,5 +1,9 @@
+numpy
 pandas
+numpy
 beautifulsoup4
 demjson
 statsmodels
 seaborn
+sklearn
+ipywidgets
