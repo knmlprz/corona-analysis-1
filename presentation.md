@@ -9,16 +9,18 @@ abstract: |
 
 # O nas
 
+![Logo koła naukowago](img/logo.svg)
+
 ::: notes
 Jesteśmy studentami Politechniki Rzeszowskiej na kierunku Inżynieria i analiza
 danych, a także członkami nowo stworzonego koła uczenia maszynowego. Chcemy
 pokazać to, co udało nam się odkryć w trakcie realizacji pierwszego Hackathonu
-realizowanego w naszym kole, a dotyczył on pandemii.
+realizowanego w naszym kole.
 :::
 
-[//]: # (Dodać logo koła naukowego)
-
 # Nasz cel
+
+
 
 ::: notes
 Naszym celem było znalezienie, reguł asocjacyjnych i ciekawych zależności w
