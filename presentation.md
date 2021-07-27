@@ -20,11 +20,11 @@ realizowanego w naszym kole.
 
 # Nasz cel
 
-
+Znalezienie reguł kierujących rozwojem pandemii
 
 ::: notes
 Naszym celem było znalezienie, reguł asocjacyjnych i ciekawych zależności w
-danych z zachorwań, które docelowo miały nam posłużyć do lepszego zrozumienia
+danych z zachorowań, które docelowo miały nam posłużyć do lepszego zrozumienia
 sposobu rozprzestrzeniania się koronawirusa SARS-COV-2 i przewidywania ilości
 zachorowań.
 
@@ -34,6 +34,8 @@ zainteresujemy naszą pracą i dołączą do naszego koła naukowego.
 :::
 
 # Dane
+
+![](img/dane_marzec.png)
 
 ::: notes
 Jeszcze, gdy zaczynaliśmy, liczba zachorowań nie przekraczała 500 osób
