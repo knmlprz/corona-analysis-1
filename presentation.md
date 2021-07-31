@@ -90,7 +90,7 @@ być skorelowane z mobilnością Polaków.
 Główną techniką wykorzystywaną przez nas wył web scraping, stworzyliśmy skrypty,
 które (oczywiście za zgodą właścicieli portali) pobierały z nich bieżące dane. Z
 kolei pozostałe dane były udostępnione publicznie w formie skompresowanych
-plików, także aktualizowanych codziennie.
+plików.
 :::
 
 # Jak pracowaliśmy z danymi
