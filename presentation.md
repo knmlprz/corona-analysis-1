@@ -11,22 +11,22 @@ abstract: |
 
 ![Logo koła naukowago](img/logo.svg)
 
-::: notes
-Jesteśmy studentami Politechniki Rzeszowskiej na kierunku Inżynieria i analiza
-danych, a także członkami nowo stworzonego koła uczenia maszynowego. Chcemy
-pokazać to, co udało nam się odkryć w trakcie realizacji pierwszego Hackathonu
-realizowanego w naszym kole.
+::: notes 
+Jesteśmy studentami Politechniki Rzeszowskiej na kierunku Inżynieria i
+analiza danych, a także członkami nowo stworzonego koła uczenia maszynowego.
+Chcemy pokazać to, co udało nam się odkryć w trakcie realizacji pierwszego
+Hackathonu realizowanego w naszym kole.
 :::
 
 # Nasz cel
 
 Znalezienie reguł kierujących rozwojem pandemii
 
-::: notes
-Naszym celem było znalezienie, reguł asocjacyjnych i ciekawych zależności w
-danych z zachorowań, które docelowo miały nam posłużyć do lepszego zrozumienia
-sposobu rozprzestrzeniania się koronawirusa SARS-COV-2 i przewidywania ilości
-zachorowań.
+::: notes 
+Naszym celem było znalezienie, reguł asocjacyjnych i ciekawych
+zależności w danych z zachorowań, które docelowo miały nam posłużyć do lepszego
+zrozumienia sposobu rozprzestrzeniania się koronawirusa SARS-COV-2 i
+przewidywania ilości zachorowań.
 
 Pokażemy, w jaki sposób pracowaliśmy, jakich technik używaliśmy i jak zdobyliśmy
 dane, których używaliśmy. Mamy nadzieję, że są wśród was studenci, których
@@ -37,18 +37,26 @@ zainteresujemy naszą pracą i dołączą do naszego koła naukowego.
 
 ![](img/dane_marzec.png)
 
-::: notes
-Jeszcze, gdy zaczynaliśmy, liczba zachorowań nie przekraczała 500 osób
-dziennie (był to okres od marca do maja 2020), wtedy kolejnymi falami określano
-niewielkie z perspektywy czasu wzrosty zakażeń. 
+::: notes 
+Tak wyglądały pierwsze dane, do których uzyskaliśmy dostęp. Jeszcze,
+gdy zaczynaliśmy, liczba zachorowań nie przekraczała 500 osób dziennie (był to
+okres od marca do maja 2020). Na wykresie widać pierwszy problem, który
+napotkaliśmy: dane nie były aktualizowane codziennie. Pochodziły ze strony 
+healthdata.org, a publikowane były w formie raportów wraz z danymi.
 :::
 
 # Jak znaleźć źródła danych?
 
-::: notes
-To było pierwszym pytanie, jakie zadaliśmy sobie w naszym projekcie. Szczególnie
-na początku pandemii dostęp do szczegółowych danych nie był tak prosty. Powodów
-było kilka:
+Dwa główne problemy:
+
+- Na stronie ministerstwa publikowane były wyłącznie dane z danego dnia.
+- Publicznie dostępne dane dotyczące wielu krajów nie zawierały podziału na
+  województwa.
+
+::: notes 
+To było pierwszym pytaniem, jakie zadaliśmy sobie w naszym projekcie.
+Szczególnie na początku pandemii dostęp do szczegółowych danych nie był tak
+prosty. Powodów było kilka:
 
 - na stronie ministerstwa publikowane były wyłącznie dane z danego dnia.
 - publicznie dostępne dane dotyczące wielu krajów nie zawierały podziału na
@@ -60,18 +68,20 @@ jeszcze mniejsze jednostki podziału terytorialnego.
 
 # Źródła danych
 
-::: notes
-Na szczęście udało nam się znaleźć inne źródła, tj. strony tworzone przez ludzi,
-którzy codziennie sami zbierali te dane i udostępniali je w formie wykresów.
-Przykładem takiej strony jest <koronawirusunas.pl>. Dzięki uprzejmości jej
-twórców udało nam się pobrać dane na niej zawarte i przeprowadzić wszystkie
-analizy.
-
 Do głównych źródeł danych zaliczyć możemy:
 
 - IHME
 - koronawirusunas.pl
 - policja.pl
+
+::: notes
+Na szczęście udało nam się znaleźć inne źródła, tj. strony tworzone przez ludzi,
+którzy codziennie sami zbierali te dane i udostępniali je w formie wykresów.
+Przykładem takiej strony jest <koronawirusunas.pl>. Dzięki uprzejmości jej
+twórców udało nam się pobrać dane na niej zawarte i przeprowadzić wszystkie
+analizy. Z czystej ciekawości pobraliśmy też raporty policji na temat osób 
+zatrzymanych i przeprowadzanych interwencji, gdyż podejrzewaliśmy, iż mogłyby 
+być skorelowane z mobilnością Polaków.
 :::
 
 # Techniki zbierania danych
