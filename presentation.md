@@ -117,4 +117,30 @@ wersji Git nie są czytelne.
 
 # Analiza zebranych danych
 
+![Porównanie IHME i koronawirusunas](img/dane_marzec_porownanie.png)
 
+::: notes
+Przejdziemy teraz do analizy zebranych danych. Do najważniejszych wykresów 
+należą te dotyczące ilości zakażeń z danego dnia. W naszym przypadku pochodziły
+one z dwóch źródeł IHME oraz strony koronawirusunas.pl. Tak prezentuje się 
+porównanie tych danych. Już na pierwszy rzut oka widać, że dane te się różnią.
+Dlatego ważne jest sprawdzanie ich dokładnych opisów u źródła. 
+
+W naszym przypadku dane ze strony koronawirusunas.pl to dane brane bezpośrednio
+z ministerstwa i są to dane dzienne. Natomiast dane z IHME opisywał raport, w
+którym nie było mowy o uśrednianiu danych, a na takie wyglądają. Ponadto na
+dzień zebrania tych danych IHME nie opublikowało nowego raportu i dane urywają
+się na 19 Maja 2020 roku.
+:::
+
+# Początkowe fazy epidemii
+
+![Porównanie faz](img/fazy_porownanie.png)
+
+::: notes
+Mając już dane o ilości zakażeń postanowiliśmy się zastanowić nad tym jak na 
+podstawie tych danych rząd podejmował decyzje o wprowadzaniu kolejnych 
+obostrzeń oraz ich łagodzeniu. W tym celu przeglądneliśmy Internet w 
+poszukiwaniu dat wprowadzenia obostrzeń. Dane podzieliliśmy na kolejne etapy 
+i tak oto prezentuja się wykresy
+:::
