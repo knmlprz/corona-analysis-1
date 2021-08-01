@@ -45,7 +45,7 @@ napotkaliśmy: dane nie były aktualizowane codziennie. Pochodziły ze strony
 healthdata.org, a publikowane były w formie raportów wraz z danymi.
 :::
 
-# Jak znaleźć źródła danych?
+# Problemy z oficjalnymi źródłami danych
 
 Dwa główne problemy:
 
