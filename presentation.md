@@ -53,7 +53,7 @@ Dwa główne problemy:
 - Publicznie dostępne dane dotyczące wielu krajów nie zawierały podziału na
   województwa.
   
-![Wykres zarażeń województwa + Polska](img/zar.png)
+![Wykres zarażeń województwa + Polska](img/zar_woj.png)
 
 ::: notes 
 To było pierwszym pytaniem, jakie zadaliśmy sobie w naszym projekcie.
@@ -114,4 +114,7 @@ notatniku, co umożliwiło nam zapanowanie nad projektem. Oczywiście korzystani
 notatników też ma swoje wady, kolejne zmiany utrzymywane w systemie kontroli
 wersji Git nie są czytelne.
 :::
+
+# Analiza zebranych danych
+
 
