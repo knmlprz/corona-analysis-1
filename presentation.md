@@ -79,6 +79,18 @@ kolei pozostałe dane były udostępnione publicznie w formie skompresowanych
 plików, także aktualizowanych codziennie.
 :::
 
+## Dostęp do API
+
+::: notes
+Część danych była dostępna bezpośrednio z API, tzn. wysyłając zapytanie do
+strony otrzymywaliśmy dane gotowe do przyjęcia przez program. Była to
+sytuacja o tyle prostsza od scrapingu, że nie musieliśmy dodatkowo przetwarzać
+tych danych.
+
+Wśród danych dostępnych przez API były dane pogodowe, jednak bardzo ułatwiało
+to pracę.
+:::
+
 # Jak pracowaliśmy z danymi
 
 ::: notes
