@@ -56,7 +56,7 @@ Dwa główne problemy:
 ![Wykres zarażeń województwa + Polska](img/zar.png)
 
 ::: notes 
-To było pierwszym pytaniem, jakie zadaliśmy sobie w naszym projekcie.
+To było pierwsze pytanie, jakie zadaliśmy sobie w naszym projekcie.
 Szczególnie na początku pandemii dostęp do szczegółowych danych nie był tak
 prosty. Powodów było kilka:
 
