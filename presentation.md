@@ -124,7 +124,9 @@ systemie kontroli wersji Git nie są czytalne.
 
 ![Wykres zarażeń województwa + Polska](img/zar.png)
 
-# Czego się nauczyliśmy?
+# Wnioski
+
+## Czego się nauczyliśmy?
 
 ::: notes
 Analiza tych danych pozwoliła nam na zapoznanie się z metodami przetwarzznia ich,
@@ -136,3 +138,7 @@ korelowały ze sobą, ponieważ mogły one zakłócić odbiór pozostałych stat
 :::
 
 ## Co innego zyskaliśmy?
+
+::: notes
+
+:::
