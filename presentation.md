@@ -73,7 +73,7 @@ Do głównych źródeł danych zaliczyć możemy:
 # Techniki zbierania danych
 
 ::: notes
-Główną techniką wykorzystywaną przez nas wył web scraping, stworzyliśmy skrypty,
+Główną techniką wykorzystywaną przez nas był web scraping, stworzyliśmy skrypty,
 które (oczywiście za zgodą właścicieli portali) pobierały z nich bieżące dane. Z
 kolei pozostałe dane były udostępnione publicznie w formie skompresowanych
 plików, także aktualizowanych codziennie.
