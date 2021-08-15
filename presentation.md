@@ -140,5 +140,9 @@ korelowały ze sobą, ponieważ mogły one zakłócić odbiór pozostałych stat
 ## Co innego zyskaliśmy?
 
 ::: notes
-
+Nasze _badania_ przełożyły się poza tym wszystkim na dodatkowe punkty do
+stypendium rektora, ponieważ były powiązane z innymi badaniami prowadzonymi na
+PRz przez prof. Dominika Strzałkę. Dzięki temu mogliśmy także lepiej poznać się
+z kolegami z roku, mimo sytuacji pandemicznej, ponieważ wymienialiśmy się
+doświadczeniami i rozmawialiśmy na temat całego hackathonu.
 :::
