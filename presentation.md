@@ -101,7 +101,7 @@ plików.
 # Jak pracowaliśmy z danymi
 
 ![Jupyter](img/jupyter.png)
-![img.png](working_with_jupyter.png)
+![img.png](img/working_with_jupyter.png)
 ::: notes 
 Te dane musiały zostac sprowadzone do wspólnego formatu, tak aby
 wszystkie stworzone wykresy i analizy można było odtwarzać natychmiast po
@@ -152,12 +152,43 @@ następujący sposób:
   tak przez około dwa tygodnie, po tym czasie zaczęła wzrastać.
   
 - Liczba infekcji stale rosła, po 3-4 tygodniach ustabilizowała się na 
-  poziomie 350 zakażeń dziennie
+  poziomie 350 zakażeń dziennie.
+  
+:::
+
+# Analiza danych
+![](img/mobilnosc_infekcje_rekomendacje_rzadu.png)
+
+::: notes
   
 Zatem: pomimo wzrostu mobilności polaków zakażenia ustabilizowały się na 
 pewnym poziomie. Mogło to być spowodowane faktem, iż wprowadzone obostrzenia 
-zaczęły przynosić skutki.
+zaczęły przynosić skutki. 
 
-Wykres ten staje się o wiele ciekawszy, jeżeli przypomnimy sobie jak 
-wyglądały  dane z poszczególnych województw.
+Po naniesieniu dat z poszczególnymi obostrzeniami i rozporządzeniami to ta 
+hipoteza zdaje się prawdziwa.
+
+Wykres ten staje się o wiele ciekawszy, jeżeli przypomnimy sobie jak, 
+wyglądały dane z poszczególnych województw.
+:::
+
+# Analiza danych - wykres województwa
+
+![Wykres województwa](img/zar_woj.png)
+
+::: notes
+Tutaj zdecydowanie wyróżnia się województwo śląskie, które w tym czasie 
+notowało najwięcej zakażeń. Ponadto suma zakażeń gwałtownie rosła. 
+Potraktowaliśmy to województwo jako odstające od pozostałych.
+:::
+
+# Analiza danych - bez śląska
+
+![Fazy w czasie bez śląska](img/fazy_porownanie.png)
+
+::: notes
+Usunięcie odstających danych dało ciekawy efekt, liczba zakażeń w 
+pozostałych województwach maleje. Stąd też prawdopodobnie decyzje o 
+łagodzeniu obostrzeń w kraju. Nie wliczając śląska, wraz ze wzrostem mobilności 
+nie rosła ilość zakażeń.
 :::
