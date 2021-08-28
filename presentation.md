@@ -145,8 +145,19 @@ obostrzeń oraz ich łagodzeniu. W tym celu przeglądnęliśmy Internet w
 poszukiwaniu dat wprowadzenia obostrzeń. Dane podzieliliśmy na kolejne etapy 
 i tak oto prezentują się wykresy. 
 
-Zauważyliśmy, że pomimo wzrostu mobilności polaków dzienna liczba infekcji 
-nie zwiększyła się - oscylowała w granicach 350. Wykres ten staje się o 
-wiele ciekawszy, jeżeli przypomnimy sobie jak wyglądały dane z poszczególnych 
-województw.
+W skali of fioletu po czerwień jest czas, zatem odczytać możemy go w 
+następujący sposób: 
+
+- Mobilność polaków na początku pandemii znacznie spadła i utrzymywała się 
+  tak przez około dwa tygodnie, po tym czasie zaczęła wzrastać.
+  
+- Liczba infekcji stale rosła, po 3-4 tygodniach ustabilizowała się na 
+  poziomie 350 zakażeń dziennie
+  
+Zatem: pomimo wzrostu mobilności polaków zakażenia ustabilizowały się na 
+pewnym poziomie. Mogło to być spowodowane faktem, iż wprowadzone obostrzenia 
+zaczęły przynosić skutki.
+
+Wykres ten staje się o wiele ciekawszy, jeżeli przypomnimy sobie jak 
+wyglądały  dane z poszczególnych województw.
 :::
