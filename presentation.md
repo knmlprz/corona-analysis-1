@@ -101,7 +101,7 @@ plików.
 # Jak pracowaliśmy z danymi
 
 ![Jupyter](img/jupyter.png)
-
+![img.png](working_with_jupyter.png)
 ::: notes 
 Te dane musiały zostac sprowadzone do wspólnego formatu, tak aby
 wszystkie stworzone wykresy i analizy można było odtwarzać natychmiast po
@@ -112,7 +112,7 @@ nich służył wyłącznie do pobrania danych ze wszystkich źródeł ich oczysz
 sprowadzenia do wspólnego formatu. Same analizy znalazły się w osobnym
 notatniku, co umożliwiło nam zapanowanie nad projektem. Oczywiście korzystanie z
 notatników też ma swoje wady, kolejne zmiany utrzymywane w systemie kontroli
-wersji Git nie są czytelne.
+wersji Git nie są czytelne. 
 :::
 
 # Analiza zebranych danych
@@ -130,17 +130,23 @@ W naszym przypadku dane ze strony koronawirusunas.pl to dane brane bezpośrednio
 z ministerstwa i są to dane dzienne. Natomiast dane z IHME opisywał raport, w
 którym nie było mowy o uśrednianiu danych, a na takie wyglądają. Ponadto na
 dzień zebrania tych danych IHME nie opublikowało nowego raportu i dane urywają
-się na 19 Maja 2020 roku.
+się na 19 Maja 2020 roku - kolejne dni to naiwne przewidywanie oparte o 
+średnią z dni poprzednich.
 :::
 
-# Początkowe fazy epidemii
+# Analiza danych
 
-![Porównanie faz](img/fazy_porownanie.png)
+![Porównanie faz](img/fazy_w_czasie.png)
 
 ::: notes
-Mając już dane o ilości zakażeń postanowiliśmy się zastanowić nad tym jak na 
+Mając już dane o ilości zakażeń, postanowiliśmy się zastanowić nad tym, jak na 
 podstawie tych danych rząd podejmował decyzje o wprowadzaniu kolejnych 
-obostrzeń oraz ich łagodzeniu. W tym celu przeglądneliśmy Internet w 
+obostrzeń oraz ich łagodzeniu. W tym celu przeglądnęliśmy Internet w 
 poszukiwaniu dat wprowadzenia obostrzeń. Dane podzieliliśmy na kolejne etapy 
-i tak oto prezentuja się wykresy
+i tak oto prezentują się wykresy. 
+
+Zauważyliśmy, że pomimo wzrostu mobilności polaków dzienna liczba infekcji 
+nie zwiększyła się - oscylowała w granicach 350. Wykres ten staje się o 
+wiele ciekawszy, jeżeli przypomnimy sobie jak wyglądały dane z poszczególnych 
+województw.
 :::
