@@ -92,6 +92,12 @@ tych danych.
 
 Wśród danych dostępnych przez API były dane pogodowe, jednak bardzo ułatwiało
 to pracę.
+
+Niestety w tym roku Meteostat zaktualizował API do wersji drugiej, która jest
+zupełnie niekompatybilna z poprzednią. Z tego powodu nasz kod bez drognych
+modyfikacji nie działa aktualnie, a z braku czasu jeszcze go nie naprawiliśmy.
+Wszystkie analizy oparte są na danych, które zapisaliśmy w trakcie pierwotnego
+pisania.
 :::
 
 ## Użycie API
