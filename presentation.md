@@ -53,7 +53,7 @@ Dwa główne problemy:
 - Publicznie dostępne dane dotyczące wielu krajów nie zawierały podziału na
   województwa.
   
-![Wykres zarażeń województwa + Polska](img/zar.png)
+![Wykres zarażeń województwa + Polska](img/zar_woj.png)
 
 ::: notes 
 To było pierwsze pytanie, jakie zadaliśmy sobie w naszym projekcie.
@@ -101,7 +101,7 @@ plików.
 # Jak pracowaliśmy z danymi
 
 ![Jupyter](img/jupyter.png)
-
+![img.png](img/working_with_jupyter.png)
 ::: notes 
 Te dane musiały zostac sprowadzone do wspólnego formatu, tak aby
 wszystkie stworzone wykresy i analizy można było odtwarzać natychmiast po
@@ -112,6 +112,83 @@ nich służył wyłącznie do pobrania danych ze wszystkich źródeł ich oczysz
 sprowadzenia do wspólnego formatu. Same analizy znalazły się w osobnym
 notatniku, co umożliwiło nam zapanowanie nad projektem. Oczywiście korzystanie z
 notatników też ma swoje wady, kolejne zmiany utrzymywane w systemie kontroli
-wersji Git nie są czytelne.
+wersji Git nie są czytelne. 
 :::
 
+# Analiza zebranych danych
+
+![Porównanie IHME i koronawirusunas](img/dane_marzec_porownanie.png)
+
+::: notes
+Przejdziemy teraz do analizy zebranych danych. Do najważniejszych wykresów 
+należą te dotyczące ilości zakażeń z danego dnia. W naszym przypadku pochodziły
+one z dwóch źródeł IHME oraz strony koronawirusunas.pl. Tak prezentuje się 
+porównanie tych danych. Już na pierwszy rzut oka widać, że dane te się różnią.
+Dlatego ważne jest sprawdzanie ich dokładnych opisów u źródła. 
+
+W naszym przypadku dane ze strony koronawirusunas.pl to dane brane bezpośrednio
+z ministerstwa i są to dane dzienne. Natomiast dane z IHME opisywał raport, w
+którym nie było mowy o uśrednianiu danych, a na takie wyglądają. Ponadto na
+dzień zebrania tych danych IHME nie opublikowało nowego raportu i dane urywają
+się na 19 Maja 2020 roku - kolejne dni to naiwne przewidywanie oparte o 
+średnią z dni poprzednich.
+:::
+
+# Analiza danych
+
+![Porównanie faz](img/fazy_w_czasie.png)
+
+::: notes
+Mając już dane o ilości zakażeń, postanowiliśmy się zastanowić nad tym, jak na 
+podstawie tych danych rząd podejmował decyzje o wprowadzaniu kolejnych 
+obostrzeń oraz ich łagodzeniu. W tym celu przeglądnęliśmy Internet w 
+poszukiwaniu dat wprowadzenia obostrzeń. Dane podzieliliśmy na kolejne etapy 
+i tak oto prezentują się wykresy. 
+
+W skali of fioletu po czerwień jest czas, zatem odczytać możemy go w 
+następujący sposób: 
+
+- Mobilność polaków na początku pandemii znacznie spadła i utrzymywała się 
+  tak przez około dwa tygodnie, po tym czasie zaczęła wzrastać.
+  
+- Liczba infekcji stale rosła, po 3-4 tygodniach ustabilizowała się na 
+  poziomie 350 zakażeń dziennie.
+  
+:::
+
+# Analiza danych
+![](img/mobilnosc_infekcje_rekomendacje_rzadu.png)
+
+::: notes
+  
+Zatem: pomimo wzrostu mobilności polaków zakażenia ustabilizowały się na 
+pewnym poziomie. Mogło to być spowodowane faktem, iż wprowadzone obostrzenia 
+zaczęły przynosić skutki. 
+
+Po naniesieniu dat z poszczególnymi obostrzeniami i rozporządzeniami to ta 
+hipoteza zdaje się prawdziwa.
+
+Wykres ten staje się o wiele ciekawszy, jeżeli przypomnimy sobie jak, 
+wyglądały dane z poszczególnych województw.
+:::
+
+# Analiza danych - wykres województwa
+
+![Wykres województwa](img/zar_woj.png)
+
+::: notes
+Tutaj zdecydowanie wyróżnia się województwo śląskie, które w tym czasie 
+notowało najwięcej zakażeń. Ponadto suma zakażeń gwałtownie rosła. 
+Potraktowaliśmy to województwo jako odstające od pozostałych.
+:::
+
+# Analiza danych - bez śląska
+
+![Fazy w czasie bez śląska](img/fazy_porownanie.png)
+
+::: notes
+Usunięcie odstających danych dało ciekawy efekt, liczba zakażeń w 
+pozostałych województwach maleje. Stąd też prawdopodobnie decyzje o 
+łagodzeniu obostrzeń w kraju. Nie wliczając śląska, wraz ze wzrostem mobilności 
+nie rosła ilość zakażeń.
+:::
