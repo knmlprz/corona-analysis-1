@@ -126,6 +126,10 @@ systemie kontroli wersji Git nie są czytalne.
 
 # Wnioski
 
+::: notes
+
+:::
+
 ## Czego się nauczyliśmy?
 
 ::: notes
@@ -145,4 +149,9 @@ stypendium rektora, ponieważ były powiązane z innymi badaniami prowadzonymi n
 PRz przez prof. Dominika Strzałkę. Dzięki temu mogliśmy także lepiej poznać się
 z kolegami z roku, mimo sytuacji pandemicznej, ponieważ wymienialiśmy się
 doświadczeniami i rozmawialiśmy na temat całego hackathonu.
+
+Jest to o tyle ciekawe doświadczenie, że jest znacznie bardziej zbliżone do pracy
+w faktycznym projekcie, ponieważ nie mieliśmy z góry określonego celu. Od
+mentorów nie dostawaliśmy gotowych rozwiązań, a jedynie wskazówki czy dana metoda
+wydaje się być odpowiednią dla danego typu danych.
 :::
