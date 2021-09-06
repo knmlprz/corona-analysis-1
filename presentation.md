@@ -127,7 +127,13 @@ systemie kontroli wersji Git nie są czytalne.
 # Wnioski
 
 ::: notes
-
+Z naszej analizy wynikło wówczas, że wzrost liczby zakażonych na tamten moment
+wykazywał bardzo mocny trend wykładniczy, co jest zgodne z przewidywaniami. Co
+ciekawe Trendu nie zmieniło wprowadzenie obostrzeń, chociaż nie jest to
+równoznaczne z ich bezsensownością - trend wykładniczy jest bardzo podatny na
+zmianę podstawy, a to właśnie nią manipulowały obostrzenia. W naszym wypadku
+podstawą jest współczynnik reprodukcji wirusa, który dla wartości $r>1.0$ jest
+bardzo niekorzystny i widocznie wzrostowy.
 :::
 
 ## Czego się nauczyliśmy?
