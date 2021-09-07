@@ -76,10 +76,28 @@ Do głównych źródeł danych zaliczyć możemy:
 # Techniki zbierania danych
 
 ::: notes
-Główną techniką wykorzystywaną przez nas wył web scraping, stworzyliśmy skrypty,
+Główną techniką wykorzystywaną przez nas był web scraping, stworzyliśmy skrypty,
 które (oczywiście za zgodą właścicieli portali) pobierały z nich bieżące dane. Z
 kolei pozostałe dane były udostępnione publicznie w formie skompresowanych
 plików, także aktualizowanych codziennie.
+:::
+
+## Dostęp do API
+
+::: notes
+Część danych była dostępna bezpośrednio z API, tzn. wysyłając zapytanie do
+strony otrzymywaliśmy dane gotowe do przyjęcia przez program. Była to
+sytuacja o tyle prostsza od scrapingu, że nie musieliśmy dodatkowo przetwarzać
+tych danych.
+
+Wśród danych dostępnych przez API były dane pogodowe, jednak bardzo ułatwiało
+to pracę.
+
+Niestety w tym roku Meteostat zaktualizował API do wersji drugiej, która jest
+zupełnie niekompatybilna z poprzednią. Z tego powodu nasz kod bez drognych
+modyfikacji nie działa aktualnie, a z braku czasu jeszcze go nie naprawiliśmy.
+Wszystkie analizy oparte są na danych, które zapisaliśmy w trakcie pierwotnego
+pisania.
 :::
 
 ## Użycie API
