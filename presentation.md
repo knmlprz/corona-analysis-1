@@ -181,3 +181,5 @@ w faktycznym projekcie, ponieważ nie mieliśmy z góry określonego celu. Od
 mentorów nie dostawaliśmy gotowych rozwiązań, a jedynie wskazówki czy dana metoda
 wydaje się być odpowiednią dla danego typu danych.
 :::
+
+![Wpis w Gazecie PRz](img/gazetka.png)
