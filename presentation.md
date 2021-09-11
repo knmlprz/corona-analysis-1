@@ -144,6 +144,42 @@ systemie kontroli wersji Git nie są czytalne.
 
 # Wnioski
 
-## Czego się nauczyliśmy z tej analizy?
+::: notes
+Z naszej analizy wynikło wówczas, że wzrost liczby zakażonych na tamten moment
+wykazywał bardzo mocny trend wykładniczy, co jest zgodne z przewidywaniami. Co
+ciekawe Trendu nie zmieniło wprowadzenie obostrzeń, chociaż nie jest to
+równoznaczne z ich bezsensownością - trend wykładniczy jest bardzo podatny na
+zmianę podstawy, a to właśnie nią manipulowały obostrzenia. W naszym wypadku
+podstawą jest współczynnik reprodukcji wirusa, który dla wartości $r>1.0$ jest
+bardzo niekorzystny i widocznie wzrostowy.
+:::
+
+![Wykres $a^x$ dla $a=1.3,1.5,2,2.5,3$](img/exp.png)
+
+## Czego się nauczyliśmy?
+
+::: notes
+Analiza tych danych pozwoliła nam na zapoznanie się z metodami przetwarzania ich,
+podstawami wizualizacji, a także znajdowania nowych źródeł. Bardzo dużą rolę
+odegrało także oczyszczanie tych danych, ponieważ prawie wszystkie źródła
+zawierały dane niepotrzebne, które w żaden sposób nie przyczyniają się do
+jakichkolwiek znaczących wyników. Wykluczyliśmy także dane, które silnie
+korelowały ze sobą, ponieważ mogły one zakłócić odbiór pozostałych statystyk.
+:::
 
 ## Co innego zyskaliśmy?
+
+::: notes
+Nasze _badania_ przełożyły się poza tym wszystkim na dodatkowe punkty do
+stypendium rektora, ponieważ były powiązane z innymi badaniami prowadzonymi na
+PRz przez prof. Dominika Strzałkę. Dzięki temu mogliśmy także lepiej poznać się
+z kolegami z roku, mimo sytuacji pandemicznej, ponieważ wymienialiśmy się
+doświadczeniami i rozmawialiśmy na temat całego hackathonu.
+
+Jest to o tyle ciekawe doświadczenie, że jest znacznie bardziej zbliżone do pracy
+w faktycznym projekcie, ponieważ nie mieliśmy z góry określonego celu. Od
+mentorów nie dostawaliśmy gotowych rozwiązań, a jedynie wskazówki czy dana metoda
+wydaje się być odpowiednią dla danego typu danych.
+:::
+
+![Wpis w Gazecie PRz](img/gazetka.png)
