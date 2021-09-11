@@ -139,7 +139,7 @@ bardzo niekorzystny i widocznie wzrostowy.
 ## Czego się nauczyliśmy?
 
 ::: notes
-Analiza tych danych pozwoliła nam na zapoznanie się z metodami przetwarzznia ich,
+Analiza tych danych pozwoliła nam na zapoznanie się z metodami przetwarzania ich,
 podstawami wizualizacji, a także znajdowania nowych źródeł. Bardzo dużą rolę
 odegrało także oczyszczanie tych danych, ponieważ prawie wszystkie źródła
 zawierały dane niepotrzebne, które w żaden sposób nie przyczyniają się do
