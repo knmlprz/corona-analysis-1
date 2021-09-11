@@ -136,6 +136,8 @@ podstawą jest współczynnik reprodukcji wirusa, który dla wartości $r>1.0$ j
 bardzo niekorzystny i widocznie wzrostowy.
 :::
 
+![Wykres $a^x$ dla $a=1.3,1.5,2,2.5,3$](img/exp.png)
+
 ## Czego się nauczyliśmy?
 
 ::: notes
