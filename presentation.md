@@ -177,7 +177,7 @@ API używamy do pobierania danych pogodowych. Pochodzą one z
 
 ---
 
-![Porównanie faz](img/fazy_w_czasie.png){width=60%}
+![Porównanie faz](img/fazy_w_czasie.png){width=80%}
 
 ::: notes
 
@@ -192,7 +192,7 @@ API używamy do pobierania danych pogodowych. Pochodzą one z
 
 ---
 
-![Mobilność i infekcje, a rekomendacje rządowe](img/mobilnosc_infekcje_rekomendacje_rzadu.png){width=60%}
+![Mobilność i infekcje, a rekomendacje rządowe](img/mobilnosc_infekcje_rekomendacje_rzadu.png){width=80%}
 
 ::: notes
   
