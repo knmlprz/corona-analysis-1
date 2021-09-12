@@ -59,6 +59,11 @@ Znalezienie reguł kierujących rozwojem pandemii
 
 # Problemy z oficjalnymi źródłami danych
 
+::: notes
+1. Publikacja danych oficjalnych
+2. Które jednak były kiepskie
+:::
+
 ---
 
 Dwa główne problemy:
