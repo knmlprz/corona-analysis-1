@@ -5,7 +5,7 @@ author:
   - Patryk Gronkiewicz
   - Piotr Krawiec
 lang: pl
-theme: Dresden
+theme: solarized
 colorscheme: orchid
 fonttheme: professionalfonts
 ---
