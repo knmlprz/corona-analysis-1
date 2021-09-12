@@ -40,6 +40,11 @@ Znalezienie reguł kierujących rozwojem pandemii
 
 # Dane
 
+::: notes
+1. Początkowo było trudno o dobre dane
+2. Brak jednolitego dostępu do nich
+:::
+
 ---
 
 ![Dane, które były dostępne na samym początku](img/dane_marzec.png){width=90%}
