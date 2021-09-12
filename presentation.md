@@ -119,38 +119,23 @@ Python 3 i BeautifulSoup4
 # Dostęp do API
 
 ::: notes
-Część danych była dostępna bezpośrednio z API, tzn. wysyłając zapytanie do
-strony otrzymywaliśmy dane gotowe do przyjęcia przez program. Była to
-sytuacja o tyle prostsza od scrapingu, że nie musieliśmy dodatkowo przetwarzać
-tych danych.
-
-Wśród danych dostępnych przez API były dane pogodowe, jednak bardzo ułatwiało
-to pracę.
-
-Niestety w tym roku Meteostat zaktualizował API do wersji drugiej, która jest
-zupełnie niekompatybilna z poprzednią. Z tego powodu nasz kod bez drognych
-modyfikacji nie działa aktualnie, a z braku czasu jeszcze go nie naprawiliśmy.
-Wszystkie analizy oparte są na danych, które zapisaliśmy w trakcie pierwotnego
-pisania.
+1. Dane były dostępne w API
+2. Dane pogodowe
+3. Aktualizacja API meteostatu
+4. Potrzeba aktualizacji
 :::
 
-## Użycie API
+# Użycie API
 
 API używamy do pobierania danych pogodowych. Pochodzą one z
 [Meteostatu](https://meteostat.net/en/sources), a pobieramy je dla Warszawy.
 
 ::: notes
-API udostępnia takie dane jak temperatura (średnia, max, min), dane o wietrze,
-nasłonecznieniu, opadach i ciśnieniu - spróbowaliśmy znaleźć korelację między
-tymi danymi, a zachorowaniami (niekoniecznie natychmiastową). Dla naszego
-użytku to było najłatwiejsze rozwiązanie, ponieważ Meteostat dostarcza dobre
-jakościowo dane bez dodatkowych opłat w przeciwieństwie do usług takich jak
-AccuWeather. Jako miejsce pobrania danych wybraliśmy Warszawę ze względu na
-bycie - mniej więcej - w centrum kraju. Dodatkowym atutem jest też to, że
-jako pojedyncze miasto jest największa w Polsce, więc można się było tam
-spodziewać najlepszego odwzorowania trendów w kraju. Drugim dobrym strzałem
-mógł się okazać Śląsk ze względu na duże zagęszczenie ludności i fakt, że
-cała aglomeracja przewyższa populacją Warszawę. 
+1. Temperatura, wiatr, nasłonecznienie, opady, ciśnienie
+2. Korelacja pogody z zachorowaniami (z opóźnieniem)
+3. Wysoka jakość danych
+4. Brak opłat
+5. Warszawa jako duże miasto w centrum kraju
 :::
 
 
@@ -166,16 +151,11 @@ cała aglomeracja przewyższa populacją Warszawę.
 
 ::: notes 
 
-Te dane musiały zostac sprowadzone do wspólnego formatu, tak aby
-wszystkie stworzone wykresy i analizy można było odtwarzać natychmiast po
-aktualizacji danych, ponieważ te zmieniały się z dnia na dzień wraz z rozwojem
-pandemii. Do tego wykorzystaliśmy pythona i Jupyterlab. Z pomoca Jupyterlab
-można stworzyć interaktywne notatniki, które działają krok po kroku, jeden z
-nich służył wyłącznie do pobrania danych ze wszystkich źródeł ich oczyszczenia i
-sprowadzenia do wspólnego formatu. Same analizy znalazły się w osobnym
-notatniku, co umożliwiło nam zapanowanie nad projektem. Oczywiście korzystanie z
-notatników też ma swoje wady, kolejne zmiany utrzymywane w systemie kontroli
-wersji Git nie są czytelne. 
+1. Sprowadzenie danych do wspólnego formatu
+2. Wykorzystanie jupyter lab
+3. Interaktywne notatniki
+4. Osobne notatniki na pobieranie i analizę
+5. Trzymanie zmian w gicie
 
 :::
 
@@ -186,18 +166,11 @@ wersji Git nie są czytelne.
 ![Porównanie IHME i koronawirusunas](img/dane_marzec_porownanie.png){width=90%}
 
 ::: notes
-Przejdziemy teraz do analizy zebranych danych. Do najważniejszych wykresów 
-należą te dotyczące ilości zakażeń z danego dnia. W naszym przypadku pochodziły
-one z dwóch źródeł IHME oraz strony koronawirusunas.pl. Tak prezentuje się 
-porównanie tych danych. Już na pierwszy rzut oka widać, że dane te się różnią.
-Dlatego ważne jest sprawdzanie ich dokładnych opisów u źródła. 
-
-W naszym przypadku dane ze strony koronawirusunas.pl to dane brane bezpośrednio
-z ministerstwa i są to dane dzienne. Natomiast dane z IHME opisywał raport, w
-którym nie było mowy o uśrednianiu danych, a na takie wyglądają. Ponadto na
-dzień zebrania tych danych IHME nie opublikowało nowego raportu i dane urywają
-się na 19 Maja 2020 roku - kolejne dni to naiwne przewidywanie oparte o 
-średnią z dni poprzednich.
+1. Ilość zakażeń z dnia (IHME/koronawirusunas)
+2. Różnice w danych
+3. koronawirusunas to dane z ministerstwa
+4. IHME raport bez uśredniania (?)
+5. Brak nowego raportu po 19 maja 2020 w IHME
 :::
 
 # Analiza danych
@@ -208,21 +181,11 @@ się na 19 Maja 2020 roku - kolejne dni to naiwne przewidywanie oparte o
 
 ::: notes
 
-Mając już dane o ilości zakażeń, postanowiliśmy się zastanowić nad tym, jak na 
-podstawie tych danych rząd podejmował decyzje o wprowadzaniu kolejnych 
-obostrzeń oraz ich łagodzeniu. W tym celu przeglądnęliśmy Internet w 
-poszukiwaniu dat wprowadzenia obostrzeń. Dane podzieliliśmy na kolejne etapy 
-i tak oto prezentują się wykresy. 
-
-W skali of fioletu po czerwień jest czas, zatem odczytać możemy go w 
-następujący sposób: 
-
-- Mobilność polaków na początku pandemii znacznie spadła i utrzymywała się 
-  tak przez około dwa tygodnie, po tym czasie zaczęła wzrastać.
-  
-- Liczba infekcji stale rosła, po 3-4 tygodniach ustabilizowała się na 
-  poziomie 350 zakażeń dziennie.
-  
+1. Zmiana liczby zakażeń i mobilności w czasie
+2. Wprowadzanie kolejnych obostrzeń
+3. Czas od fioletu do czerwieni
+4. Spadek mobilności jedynie przez 2 tygodnie i późniejszy wzrost
+5. Ustabilizowanie liczby zakażeń po 3-4 tygodniach (350/dzień)
 :::
 
 # Analiza danych
@@ -233,19 +196,11 @@ następujący sposób:
 
 ::: notes
   
-Zatem: pomimo wzrostu mobilności polaków zakażenia ustabilizowały się na 
-pewnym poziomie. Mogło to być spowodowane faktem, iż wprowadzone obostrzenia 
-zaczęły przynosić skutki. 
-
-Po naniesieniu dat z poszczególnymi obostrzeniami i rozporządzeniami to ta 
-hipoteza zdaje się prawdziwa.
-
-Wykres ten staje się o wiele ciekawszy, jeżeli przypomnimy sobie jak, 
-wyglądały dane z poszczególnych województw.
+1. Wzorst mobilności nie wpłynął na liczbę zakażeń
+2. Skuteczność obostrzeń
+3. Widać na wykresie, że obostrzenia działały
 
 :::
-
-<!-- ![Wykres zarażeń województwa + Polska](img/zar.png) -->
 
 # Analiza danych - wykres województwa
 
@@ -255,9 +210,8 @@ wyglądały dane z poszczególnych województw.
 
 ::: notes
 
-Tutaj zdecydowanie wyróżnia się województwo śląskie, które w tym czasie 
-notowało najwięcej zakażeń. Ponadto suma zakażeń gwałtownie rosła. 
-Potraktowaliśmy to województwo jako odstające od pozostałych.
+1. Specyficzny Śląsk
+2. Znaczny wpływ na dane
 
 :::
 
@@ -269,10 +223,9 @@ Potraktowaliśmy to województwo jako odstające od pozostałych.
 
 ::: notes
 
-Usunięcie odstających danych dało ciekawy efekt, liczba zakażeń w 
-pozostałych województwach maleje. Stąd też prawdopodobnie decyzje o 
-łagodzeniu obostrzeń w kraju. Nie wliczając śląska, wraz ze wzrostem mobilności 
-nie rosła ilość zakażeń.
+1. Znaczna zmiana trendu po zignorowaniu Śląska
+2. Luzowanie obostrzeń
+3. Zwiększona mobilność nie powoduje wzorstu liczby zakażeń
 
 :::
 
@@ -281,13 +234,10 @@ nie rosła ilość zakażeń.
 
 ::: notes
 
-Z naszej analizy wynikło wówczas, że wzrost liczby zakażonych na tamten moment
-wykazywał bardzo mocny trend wykładniczy, co jest zgodne z przewidywaniami. Co
-ciekawe Trendu nie zmieniło wprowadzenie obostrzeń, chociaż nie jest to
-równoznaczne z ich bezsensownością - trend wykładniczy jest bardzo podatny na
-zmianę podstawy, a to właśnie nią manipulowały obostrzenia. W naszym wypadku
-podstawą jest współczynnik reprodukcji wirusa, który dla wartości $r>1.0$ jest
-bardzo niekorzystny i widocznie wzrostowy.
+1. Widoczny trend wykładniczy
+2. Brak zmiany w trendzie niezależnie od obostrzeń
+3. Trend wykładniczy i wrażliwość na zmianę podstawy
+4. Współczynnik reprodukcji podstawą funkcji wykładniczej
 
 :::
 
@@ -299,12 +249,12 @@ bardzo niekorzystny i widocznie wzrostowy.
 
 ::: notes
 
-Analiza tych danych pozwoliła nam na zapoznanie się z metodami przetwarzania ich,
-podstawami wizualizacji, a także znajdowania nowych źródeł. Bardzo dużą rolę
-odegrało także oczyszczanie tych danych, ponieważ prawie wszystkie źródła
-zawierały dane niepotrzebne, które w żaden sposób nie przyczyniają się do
-jakichkolwiek znaczących wyników. Wykluczyliśmy także dane, które silnie
-korelowały ze sobą, ponieważ mogły one zakłócić odbiór pozostałych statystyk.
+1. Poznanie metod:
+  - przetwarzania
+  - wizualizacji
+2. Sposoby na szukanie nowych danych
+3. Sposoby oczyszczania danych
+4. Wykluczanie danych silnie skorelowanych
 
 :::
 
@@ -312,16 +262,13 @@ korelowały ze sobą, ponieważ mogły one zakłócić odbiór pozostałych stat
 
 ::: notes
 
-Nasze _badania_ przełożyły się poza tym wszystkim na dodatkowe punkty do
-stypendium rektora, ponieważ były powiązane z innymi badaniami prowadzonymi na
-PRz przez prof. Dominika Strzałkę. Dzięki temu mogliśmy także lepiej poznać się
-z kolegami z roku, mimo sytuacji pandemicznej, ponieważ wymienialiśmy się
-doświadczeniami i rozmawialiśmy na temat całego hackathonu.
-
-Jest to o tyle ciekawe doświadczenie, że jest znacznie bardziej zbliżone do pracy
-w faktycznym projekcie, ponieważ nie mieliśmy z góry określonego celu. Od
-mentorów nie dostawaliśmy gotowych rozwiązań, a jedynie wskazówki czy dana metoda
-wydaje się być odpowiednią dla danego typu danych.
+1. Dodatkowe punkty do stypendium
+2. Powiązanie z badaniami prof. Dominika Strzałki
+3. Lepsze poznanie kolegów z roku mimo pandemii
+4. Wymiana doświadczeń
+5. Środowisko pracy odmienne od uczelnianych projektów
+6. Wyznaczanie własnych celów
+7. Radzenie sobie z sytuacjami, gdzie nikt nie mógł nam w 100% pomóc
 
 :::
 
@@ -330,3 +277,7 @@ wydaje się być odpowiednią dla danego typu danych.
 ![Wpis w Gazecie PRz](img/gazetka.png){width=90%}
 
 # Dziękujemy za uwagę
+
+::: notes
+***Pytania***
+:::
