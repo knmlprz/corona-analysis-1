@@ -72,6 +72,11 @@ Dwa główne problemy:
 >- Publicznie dostępne dane dotyczące wielu krajów nie zawierały podziału na
   województwa.
   
+::: notes
+1. Dane jedynie za dzień poprzedni
+2. Brak granularności w danych (jedynie per kraj)
+:::
+  
 ---
 
 ![Wykres zarażeń województwa + Polska](img/zar_woj.png){width=90%}
