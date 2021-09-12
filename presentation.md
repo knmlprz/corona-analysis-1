@@ -45,11 +45,11 @@ Znalezienie reguł kierujących rozwojem pandemii
 ![Dane, które były dostępne na samym początku](img/dane_marzec.png){width=90%}
 
 ::: notes 
-Tak wyglądały pierwsze dane, do których uzyskaliśmy dostęp. Jeszcze,
-gdy zaczynaliśmy, liczba zachorowań nie przekraczała 500 osób dziennie (był to
-okres od marca do maja 2020). Na wykresie widać pierwszy problem, który
-napotkaliśmy: dane nie były aktualizowane codziennie. Pochodziły ze strony 
-healthdata.org, a publikowane były w formie raportów wraz z danymi.
+1. Było <500 zachorowań/dzień
+2. Marzec-Maj 2020
+3. Brak codziennych aktualizacji
+4. Dane z healthdata.org
+5. publikowane były jako raporty z danymi
 :::
 
 # Problemy z oficjalnymi źródłami danych
