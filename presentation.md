@@ -110,10 +110,10 @@ Do głównych źródeł danych zaliczyć możemy:
 Python 3 i BeautifulSoup4
 
 ::: notes
-Główną techniką wykorzystywaną przez nas był web scraping, stworzyliśmy skrypty,
-które (oczywiście za zgodą właścicieli portali) pobierały z nich bieżące dane. Z
-kolei pozostałe dane były udostępnione publicznie w formie skompresowanych
-plików.
+1. Python jako język główny
+2. Głównie web scraping (BS4)
+  - istnienie innych frameworków, np. scrapy
+  - wspomnienie, że bardziej znamy bs4
 :::
 
 # Dostęp do API
