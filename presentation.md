@@ -95,13 +95,8 @@ Do głównych źródeł danych zaliczyć możemy:
 >- policja.pl
 
 ::: notes
-Na szczęście udało nam się znaleźć inne źródła, tj. strony tworzone przez ludzi,
-którzy codziennie sami zbierali te dane i udostępniali je w formie wykresów.
-Przykładem takiej strony jest <koronawirusunas.pl>. Dzięki uprzejmości jej
-twórców udało nam się pobrać dane na niej zawarte i przeprowadzić wszystkie
-analizy. Z czystej ciekawości pobraliśmy też raporty policji na temat osób 
-zatrzymanych i przeprowadzanych interwencji, gdyż podejrzewaliśmy, iż mogłyby 
-być skorelowane z mobilnością Polaków.
+1. Znaleźliśmy dane udostępniane przez pasjonatów
+2. Sprawdzenie korelacji między interwencjami policji, a mobilnością
 :::
 
 # Techniki zbierania danych
