@@ -28,14 +28,14 @@ hash: true
 Znalezienie reguł kierujących rozwojem pandemii
 
 ::: notes 
-Naszym celem było znalezienie, reguł asocjacyjnych i ciekawych
-zależności w danych z zachorowań, które docelowo miały nam posłużyć do lepszego
-zrozumienia sposobu rozprzestrzeniania się koronawirusa SARS-COV-2 i
-przewidywania ilości zachorowań.
-
-Pokażemy, w jaki sposób pracowaliśmy, jakich technik używaliśmy i jak zdobyliśmy
-dane, których używaliśmy. Mamy nadzieję, że są wśród was studenci, których
-zainteresujemy naszą pracą i dołączą do naszego koła naukowego.
+1. Znalezienie:
+  - reguł asocjacyjnych
+  - ciekawych zależności
+2. Lepsze zrozumienie rozprzestrzeniania się wirusa
+3. Przewidywanie liczby zachorowań
+4. Jak pracowaliśmy
+5. jak zdobyliśmy dane
+6. Jak trafią na naszą uczelnię, to zapraszamy
 :::
 
 # Dane
