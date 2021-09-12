@@ -82,16 +82,8 @@ Dwa główne problemy:
 ![Wykres zarażeń województwa + Polska](img/zar_woj.png){width=90%}
 
 ::: notes 
-To było pierwsze pytanie, jakie zadaliśmy sobie w naszym projekcie.
-Szczególnie na początku pandemii dostęp do szczegółowych danych nie był tak
-prosty. Powodów było kilka:
-
-- na stronie ministerstwa publikowane były wyłącznie dane z danego dnia.
-- publicznie dostępne dane dotyczące wielu krajów nie zawierały podziału na
-  województwa.
-
-A szczególnie interesowały nas dane z podziałem na województwa, ewentualnie na
-jeszcze mniejsze jednostki podziału terytorialnego.
+1. Pierwsze wyzwanie - znalezienie dobrych danych
+2. Podział na województwa/powiaty
 :::
 
 # Źródła danych
