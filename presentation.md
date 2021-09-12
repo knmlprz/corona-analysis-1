@@ -8,6 +8,7 @@ lang: pl
 theme: solarized
 colorscheme: orchid
 fonttheme: professionalfonts
+hash: true
 ---
 
 # O nas
@@ -38,7 +39,9 @@ zainteresujemy naszą pracą i dołączą do naszego koła naukowego.
 
 # Dane
 
-![](img/dane_marzec.png)
+---
+
+![Dane, które były dostępne na samym początku](img/dane_marzec.png){width=90%}
 
 ::: notes 
 Tak wyglądały pierwsze dane, do których uzyskaliśmy dostęp. Jeszcze,
@@ -50,13 +53,17 @@ healthdata.org, a publikowane były w formie raportów wraz z danymi.
 
 # Problemy z oficjalnymi źródłami danych
 
+---
+
 Dwa główne problemy:
 
-- Na stronie ministerstwa publikowane były wyłącznie dane z danego dnia.
-- Publicznie dostępne dane dotyczące wielu krajów nie zawierały podziału na
+>- Na stronie ministerstwa publikowane były wyłącznie dane z danego dnia.
+>- Publicznie dostępne dane dotyczące wielu krajów nie zawierały podziału na
   województwa.
   
-![Wykres zarażeń województwa + Polska](img/zar_woj.png)
+---
+
+![Wykres zarażeń województwa + Polska](img/zar_woj.png){width=90%}
 
 ::: notes 
 To było pierwsze pytanie, jakie zadaliśmy sobie w naszym projekcie.
@@ -75,9 +82,9 @@ jeszcze mniejsze jednostki podziału terytorialnego.
 
 Do głównych źródeł danych zaliczyć możemy:
 
-- IHME
-- koronawirusunas.pl
-- policja.pl
+>- IHME
+>- koronawirusunas.pl
+>- policja.pl
 
 ::: notes
 Na szczęście udało nam się znaleźć inne źródła, tj. strony tworzone przez ludzi,
@@ -90,9 +97,14 @@ być skorelowane z mobilnością Polaków.
 :::
 
 # Techniki zbierania danych
-BeautifulSoup4 + Python
-![BS4](img/bs4.jpg)
-![Python](img/python.png)
+
+---
+
+
+![Python 3](img/python.png){width=40%}
+![BeautifulSoup4](img/bs4.jpg "BeautifulSoup4"){width=30%}
+
+Python 3 i BeautifulSoup4
 
 ::: notes
 Główną techniką wykorzystywaną przez nas był web scraping, stworzyliśmy skrypty,
@@ -101,7 +113,7 @@ kolei pozostałe dane były udostępnione publicznie w formie skompresowanych
 plików.
 :::
 
-## Dostęp do API
+# Dostęp do API
 
 ::: notes
 Część danych była dostępna bezpośrednio z API, tzn. wysyłając zapytanie do
@@ -124,8 +136,7 @@ pisania.
 API używamy do pobierania danych pogodowych. Pochodzą one z
 [Meteostatu](https://meteostat.net/en/sources), a pobieramy je dla Warszawy.
 
----
-
+::: notes
 API udostępnia takie dane jak temperatura (średnia, max, min), dane o wietrze,
 nasłonecznieniu, opadach i ciśnieniu - spróbowaliśmy znaleźć korelację między
 tymi danymi, a zachorowaniami (niekoniecznie natychmiastową). Dla naszego
@@ -137,13 +148,21 @@ jako pojedyncze miasto jest największa w Polsce, więc można się było tam
 spodziewać najlepszego odwzorowania trendów w kraju. Drugim dobrym strzałem
 mógł się okazać Śląsk ze względu na duże zagęszczenie ludności i fakt, że
 cała aglomeracja przewyższa populacją Warszawę. 
+:::
 
 
-# Jak pracowaliśmy z danymi
+# Jak pracowaliśmy z danymi?
 
-![Jupyter](img/jupyter.png)
-![img.png](img/working_with_jupyter.png)
+---
+
+<div class="r-stack">
+![](img/jupyter.png){width=30% .fragment}
+
+![](img/working_with_jupyter.png){width=100% .fragment}
+</div>
+
 ::: notes 
+
 Te dane musiały zostac sprowadzone do wspólnego formatu, tak aby
 wszystkie stworzone wykresy i analizy można było odtwarzać natychmiast po
 aktualizacji danych, ponieważ te zmieniały się z dnia na dzień wraz z rozwojem
@@ -154,11 +173,14 @@ sprowadzenia do wspólnego formatu. Same analizy znalazły się w osobnym
 notatniku, co umożliwiło nam zapanowanie nad projektem. Oczywiście korzystanie z
 notatników też ma swoje wady, kolejne zmiany utrzymywane w systemie kontroli
 wersji Git nie są czytelne. 
+
 :::
 
 # Analiza zebranych danych
 
-![Porównanie IHME i koronawirusunas](img/dane_marzec_porownanie.png)
+---
+
+![Porównanie IHME i koronawirusunas](img/dane_marzec_porownanie.png){width=90%}
 
 ::: notes
 Przejdziemy teraz do analizy zebranych danych. Do najważniejszych wykresów 
@@ -177,9 +199,12 @@ się na 19 Maja 2020 roku - kolejne dni to naiwne przewidywanie oparte o
 
 # Analiza danych
 
-![Porównanie faz](img/fazy_w_czasie.png)
+---
+
+![Porównanie faz](img/fazy_w_czasie.png){width=60%}
 
 ::: notes
+
 Mając już dane o ilości zakażeń, postanowiliśmy się zastanowić nad tym, jak na 
 podstawie tych danych rząd podejmował decyzje o wprowadzaniu kolejnych 
 obostrzeń oraz ich łagodzeniu. W tym celu przeglądnęliśmy Internet w 
@@ -198,7 +223,10 @@ następujący sposób:
 :::
 
 # Analiza danych
-![](img/mobilnosc_infekcje_rekomendacje_rzadu.png)
+
+---
+
+![Mobilność i infekcje, a rekomendacje rządowe](img/mobilnosc_infekcje_rekomendacje_rzadu.png){width=60%}
 
 ::: notes
   
@@ -211,35 +239,45 @@ hipoteza zdaje się prawdziwa.
 
 Wykres ten staje się o wiele ciekawszy, jeżeli przypomnimy sobie jak, 
 wyglądały dane z poszczególnych województw.
+
 :::
 
-![Wykres zarażeń województwa + Polska](img/zar.png)
+<!-- ![Wykres zarażeń województwa + Polska](img/zar.png) -->
 
 # Analiza danych - wykres województwa
 
-![Wykres województwa](img/zar_woj.png)
+---
+
+![Wykres województwa](img/zar_woj.png){width=90%}
 
 ::: notes
+
 Tutaj zdecydowanie wyróżnia się województwo śląskie, które w tym czasie 
 notowało najwięcej zakażeń. Ponadto suma zakażeń gwałtownie rosła. 
 Potraktowaliśmy to województwo jako odstające od pozostałych.
+
 :::
 
 # Analiza danych - bez śląska
 
+---
+
 ![Fazy w czasie bez śląska](img/fazy_porownanie.png)
 
 ::: notes
+
 Usunięcie odstających danych dało ciekawy efekt, liczba zakażeń w 
 pozostałych województwach maleje. Stąd też prawdopodobnie decyzje o 
 łagodzeniu obostrzeń w kraju. Nie wliczając śląska, wraz ze wzrostem mobilności 
 nie rosła ilość zakażeń.
+
 :::
 
 
 # Wnioski
 
 ::: notes
+
 Z naszej analizy wynikło wówczas, że wzrost liczby zakażonych na tamten moment
 wykazywał bardzo mocny trend wykładniczy, co jest zgodne z przewidywaniami. Co
 ciekawe Trendu nie zmieniło wprowadzenie obostrzeń, chociaż nie jest to
@@ -247,24 +285,30 @@ równoznaczne z ich bezsensownością - trend wykładniczy jest bardzo podatny n
 zmianę podstawy, a to właśnie nią manipulowały obostrzenia. W naszym wypadku
 podstawą jest współczynnik reprodukcji wirusa, który dla wartości $r>1.0$ jest
 bardzo niekorzystny i widocznie wzrostowy.
+
 :::
 
-![Wykres $a^x$ dla $a=1.3,1.5,2,2.5,3$](img/exp.png)
+---
 
-## Czego się nauczyliśmy?
+![Wykres $a^x$ dla $a=1.3,1.5,2,2.5,3$](img/exp.png){width=60%}
+
+# Czego się nauczyliśmy?
 
 ::: notes
+
 Analiza tych danych pozwoliła nam na zapoznanie się z metodami przetwarzania ich,
 podstawami wizualizacji, a także znajdowania nowych źródeł. Bardzo dużą rolę
 odegrało także oczyszczanie tych danych, ponieważ prawie wszystkie źródła
 zawierały dane niepotrzebne, które w żaden sposób nie przyczyniają się do
 jakichkolwiek znaczących wyników. Wykluczyliśmy także dane, które silnie
 korelowały ze sobą, ponieważ mogły one zakłócić odbiór pozostałych statystyk.
+
 :::
 
-## Co innego zyskaliśmy?
+# Co innego zyskaliśmy?
 
 ::: notes
+
 Nasze _badania_ przełożyły się poza tym wszystkim na dodatkowe punkty do
 stypendium rektora, ponieważ były powiązane z innymi badaniami prowadzonymi na
 PRz przez prof. Dominika Strzałkę. Dzięki temu mogliśmy także lepiej poznać się
@@ -275,6 +319,11 @@ Jest to o tyle ciekawe doświadczenie, że jest znacznie bardziej zbliżone do p
 w faktycznym projekcie, ponieważ nie mieliśmy z góry określonego celu. Od
 mentorów nie dostawaliśmy gotowych rozwiązań, a jedynie wskazówki czy dana metoda
 wydaje się być odpowiednią dla danego typu danych.
+
 :::
 
-![Wpis w Gazecie PRz](img/gazetka.png)
+---
+
+![Wpis w Gazecie PRz](img/gazetka.png){width=90%}
+
+# Dziękujemy za uwagę
