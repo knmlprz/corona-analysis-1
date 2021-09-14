@@ -34,6 +34,8 @@ Znalezienie reguł kierujących rozwojem pandemii
 
 # Dane
 
+---
+
 Do głównych źródeł danych zaliczyć możemy:
 
 >- IHME
