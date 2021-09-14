@@ -17,10 +17,7 @@ hash: true
 
 ::: notes 
 1. Inżynieria i analiza danych
-2. Koło
-  - założenie
-  - dlaczego je założyliśmy
-  - pierwsze działania
+2. Robione w ramach nowo założonego koła (Hackathon)
 :::
 
 # Nasz cel
@@ -29,40 +26,31 @@ Znalezienie reguł kierujących rozwojem pandemii
 
 ::: notes 
 1. Znalezienie:
-  - reguł asocjacyjnych
-  - ciekawych zależności
+    - reguł asocjacyjnych
+    - ciekawych zależności
 2. Lepsze zrozumienie rozprzestrzeniania się wirusa
 3. Przewidywanie liczby zachorowań
-4. Jak pracowaliśmy
-5. jak zdobyliśmy dane
-6. Jak trafią na naszą uczelnię, to zapraszamy
 :::
 
 # Dane
 
-::: notes
-1. Początkowo było trudno o dobre dane
-2. Brak jednolitego dostępu do nich
-:::
+Do głównych źródeł danych zaliczyć możemy:
 
----
-
-![Dane, które były dostępne na samym początku](img/dane_marzec.png){width=90%}
-
-::: notes 
-1. Było <500 zachorowań/dzień
-2. Marzec-Maj 2020
-3. Brak codziennych aktualizacji
-4. Dane z healthdata.org
-5. publikowane były jako raporty z danymi
-:::
-
-# Problemy z oficjalnymi źródłami danych
+>- IHME
+>- koronawirusunas.pl
+>- policja.pl
 
 ::: notes
-1. Publikacja danych oficjalnych
-2. Które jednak były kiepskie
+1. Znaleźliśmy dane udostępniane przez pasjonatów
+2. Sprawdzenie korelacji między interwencjami policji, a mobilnością
+3. Było <500 zachorowań/dzień
+4. Marzec-Maj 2020
+5. Brak codziennych aktualizacji
+6. Dane z healthdata.org
+7. publikowane były jako raporty z danymi
 :::
+
+# Dlaczego nie dane rządowe?
 
 ---
 
@@ -76,27 +64,19 @@ Dwa główne problemy:
 1. Dane jedynie za dzień poprzedni
 2. Brak granularności w danych (jedynie per kraj)
 :::
-  
+
 ---
 
-![Wykres zarażeń województwa + Polska](img/zar_woj.png){width=90%}
+<div class="r-stack">
+  ![](img/mapa.png){width=40%}
 
-::: notes 
-1. Pierwsze wyzwanie - znalezienie dobrych danych
-2. Podział na województwa/powiaty
-:::
-
-# Źródła danych
-
-Do głównych źródeł danych zaliczyć możemy:
-
->- IHME
->- koronawirusunas.pl
->- policja.pl
+  ![](img/tabela.png){width=40% .fragment}
+</div>
 
 ::: notes
-1. Znaleźliśmy dane udostępniane przez pasjonatów
-2. Sprawdzenie korelacji między interwencjami policji, a mobilnością
+1. Kiepskie
+2. Dostępne jedynie za poprzedni dzień
+3. Niereguralnie publikowane
 :::
 
 # Techniki zbierania danych
@@ -104,19 +84,20 @@ Do głównych źródeł danych zaliczyć możemy:
 ---
 
 
-![Python 3](img/python.png){width=40%}
-![BeautifulSoup4](img/bs4.jpg "BeautifulSoup4"){width=30%}
+<div class="r-hstack">
+![Python 3](img/python.png){width=60%}
 
-Python 3 i BeautifulSoup4
+![BeautifulSoup4](img/bs4.jpg "BeautifulSoup4"){width=110%}
+</div>
 
 ::: notes
 1. Python jako język główny
 2. Głównie web scraping (BS4)
-  - istnienie innych frameworków, np. scrapy
-  - wspomnienie, że bardziej znamy bs4
+    - istnienie innych frameworków, np. scrapy
+    - wspomnienie, że bardziej znamy bs4
 :::
 
-# Dostęp do API
+# API
 
 ::: notes
 1. Dane były dostępne w API
@@ -125,7 +106,7 @@ Python 3 i BeautifulSoup4
 4. Potrzeba aktualizacji
 :::
 
-# Użycie API
+---
 
 API używamy do pobierania danych pogodowych. Pochodzą one z
 [Meteostatu](https://meteostat.net/en/sources), a pobieramy je dla Warszawy.
@@ -138,28 +119,25 @@ API używamy do pobierania danych pogodowych. Pochodzą one z
 5. Warszawa jako duże miasto w centrum kraju
 :::
 
-
 # Jak pracowaliśmy z danymi?
 
 ---
 
 <div class="r-stack">
-![](img/jupyter.png){width=30% .fragment}
+![](img/jupyter.png){width=30%}
 
 ![](img/working_with_jupyter.png){width=100% .fragment}
 </div>
 
 ::: notes 
-
 1. Sprowadzenie danych do wspólnego formatu
 2. Wykorzystanie jupyter lab
 3. Interaktywne notatniki
 4. Osobne notatniki na pobieranie i analizę
 5. Trzymanie zmian w gicie
-
 :::
 
-# Analiza zebranych danych
+# Analiza danych
 
 ---
 
@@ -172,8 +150,6 @@ API używamy do pobierania danych pogodowych. Pochodzą one z
 4. IHME raport bez uśredniania (?)
 5. Brak nowego raportu po 19 maja 2020 w IHME
 :::
-
-# Analiza danych
 
 ---
 
@@ -188,8 +164,6 @@ API używamy do pobierania danych pogodowych. Pochodzą one z
 5. Ustabilizowanie liczby zakażeń po 3-4 tygodniach (350/dzień)
 :::
 
-# Analiza danych
-
 ---
 
 ![Mobilność i infekcje, a rekomendacje rządowe](img/mobilnosc_infekcje_rekomendacje_rzadu.png){width=80%}
@@ -202,8 +176,6 @@ API używamy do pobierania danych pogodowych. Pochodzą one z
 
 :::
 
-# Analiza danych - wykres województwa
-
 ---
 
 ![Wykres województwa](img/zar_woj.png){width=90%}
@@ -215,7 +187,9 @@ API używamy do pobierania danych pogodowych. Pochodzą one z
 
 :::
 
-# Analiza danych - bez śląska
+# A co gdyby...
+
+# "Pozbyć się" śląska?
 
 ---
 
@@ -243,15 +217,15 @@ API używamy do pobierania danych pogodowych. Pochodzą one z
 
 ---
 
-![Wykres $a^x$ dla $a=1.3,1.5,2,2.5,3$](img/exp.png){width=60%}
+![Wykres funkcji wykładniczej (inspirowane XKCD)](img/xkcd.png){width=60%}
 
 # Czego się nauczyliśmy?
 
 ::: notes
 
 1. Poznanie metod:
-  - przetwarzania
-  - wizualizacji
+    - przetwarzania
+    - wizualizacji
 2. Sposoby na szukanie nowych danych
 3. Sposoby oczyszczania danych
 4. Wykluczanie danych silnie skorelowanych
