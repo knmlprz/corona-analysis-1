@@ -252,6 +252,10 @@ API używamy do pobierania danych pogodowych. Pochodzą one z
 
 ![Wpis w Gazecie PRz](img/gazetka.png){width=90%}
 
+# Repozytorium
+
+![https://github.com/knmlprz/corona-analysis-1](img/repo_qr.svg){width=40%}
+
 # Dziękujemy za uwagę
 
 ::: notes
