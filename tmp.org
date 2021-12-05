@@ -1,0 +1,6 @@
+1. O nas
+2. Dane - skąd braliśmy etc.
+3. Chujowe dane rządowe
+4. Metody zbierania danych (scraping/API)
+5. Użycie jupyterka
+6. Przeprowadzone analizy
